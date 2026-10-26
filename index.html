@@ -222,65 +222,71 @@
         </div>
       </div>
 
-      <!-- CATEGORIES & QUOTE SECTION -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal">Danh mục nổi bật</h2>
-          <button onclick="switchTab('products')" class="text-xs sm:text-sm text-moc-brown font-semibold hover:underline flex items-center space-x-1">
-            <span>Xem tất cả</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </button>
+      <!-- FEATURED CATEGORIES & QUOTE BANNER SECTION -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal">Danh mục nổi bật</h2>
+    <button onclick="switchTab('products')" class="text-xs sm:text-sm text-moc-brown font-semibold hover:underline flex items-center space-x-1">
+      <span>Xem tất cả</span>
+      <i class="fa-solid fa-arrow-right text-[10px]"></i>
+    </button>
+  </div>
+
+  <!-- Bố cục 12 cột: 4 danh mục bên trái (8 cột) + Banner quote bên phải (4 cột) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- 4 Danh mục nhỏ dàn đều -->
+    <div class="lg:col-span-7 xl:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+      
+      <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+          <img src="nen-thom.png" alt="Nến thơm" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-moc-brown">Nến thơm</span>
+          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+        </div>
+      </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            
-            <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition">
-              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-                <img src="nenthom.png" alt="Nến thơm" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-moc-brown">Nến thơm</span>
-                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-              </div>
-            </div>
+      <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+          <img src="hop-qua.png" alt="Hộp quà tặng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-moc-brown">Hộp quà tặng</span>
+          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+        </div>
+      </div>
 
-            <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition">
-              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-                <img src="hopqua.png" alt="Hộp quà tặng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-moc-brown">Hộp quà tặng</span>
-                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-              </div>
-            </div>
+      <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+          <img src="ca-nhan-hoa.png" alt="Cá nhân hóa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-moc-brown">Cá nhân hóa</span>
+          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+        </div>
+      </div>
 
-            <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition">
-              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-                <img src="canhanhoa.png" alt="Cá nhân hóa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-moc-brown">Cá nhân hóa</span>
-                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-              </div>
-            </div>
+      <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+          <img src="tinh-dau.png" alt="Tinh dầu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-moc-brown">Tinh dầu</span>
+          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+        </div>
+      </div>
 
-            <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition">
-              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-                <img src="tinhdau.png" alt="Tinh dầu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-moc-brown">Tinh dầu</span>
-                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-              </div>
-            </div>
+    </div>
 
-<div class="lg:col-span-4 bg-[#e8ded0] rounded-2xl overflow-hidden border border-moc-border relative min-h-[220px]">
-  <img src="loinoi.png" alt="Mỗi mùi hương là một câu chuyện" class="w-full h-full object-cover">
+    <!-- Ô banner ảnh quote đặt bên phải, chiều cao khớp trọn vẹn với 4 ô bên trái -->
+    <div class="lg:col-span-5 xl:col-span-4 rounded-2xl overflow-hidden border border-moc-border/70 shadow-sm relative min-h-[200px]">
+      <img src="loinoi.png" alt="Mỗi mùi hương là một câu chuyện" class="w-full h-full object-cover">
+    </div>
+
+  </div>
 </div>
-            
-          </div>
-        </div>
       </div>
     </section>
 
