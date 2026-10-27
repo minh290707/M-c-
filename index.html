@@ -469,34 +469,146 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Render danh sách sản phẩm
-    function renderProducts(items) {
-      const grid = document.getElementById('product-grid');
-      if (!grid) return;
-
-      if (!items || items.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-10 text-moc-muted text-xs">Không tìm thấy sản phẩm.</div>`;
-        return;
-      }
-
-      grid.innerHTML = items.map(p => `
-        <div onclick="openProductModal(${p.id})" class="bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between cursor-pointer group">
-          <div>
-            <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-bg border border-moc-border/40">
-              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            </div>
-            <h4 class="font-semibold text-xs sm:text-sm text-moc-brown line-clamp-1">${p.name}</h4>
-            <p class="text-[11px] text-moc-muted mt-0.5">${p.desc}</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-moc-border/40 flex items-center justify-between">
-            <span class="font-bold text-xs sm:text-sm text-moc-brown">${p.price.toLocaleString('vi-VN')}đ</span>
-            <button onclick="event.stopPropagation(); openProductModal(${p.id})" class="bg-moc-brown text-white text-[11px] px-3.5 py-1.5 rounded-full hover:bg-moc-brownDark transition">
-              Thêm
-            </button>
-          </div>
-        </div>
-      `).join('');
+    // Dữ liệu 12 sản phẩm mới
+  const productsData = [
+    { 
+      id: 1, 
+      name: 'Nến thơm Lavender Calm', 
+      price: 129000, 
+      cat: 'nenthom', 
+      img: 'images/nen-lavender.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=600&q=80',
+      desc: 'Thư giãn • Giảm stress' 
+    },
+    { 
+      id: 2, 
+      name: 'Nến thơm Vanilla Dream', 
+      price: 129000, 
+      cat: 'nenthom', 
+      img: 'images/nen-vanilla.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
+      desc: 'Ngọt ngào • Ấm áp' 
+    },
+    { 
+      id: 3, 
+      name: 'Nến thơm Citrus Fresh', 
+      price: 139000, 
+      cat: 'nenthom', 
+      img: 'images/nen-citrus.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+      desc: 'Tươi mới • Năng lượng' 
+    },
+    { 
+      id: 4, 
+      name: 'Nến thơm Sandalwood', 
+      price: 149000, 
+      cat: 'nenthom', 
+      img: 'images/nen-sandalwood.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+      desc: 'Trầm ấm • Tĩnh lặng' 
+    },
+    { 
+      id: 5, 
+      name: 'Nến thơm Rose Garden', 
+      price: 149000, 
+      cat: 'nenthom', 
+      img: 'images/nen-rose.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+      desc: 'Lãng mạn • Dịu nhẹ' 
+    },
+    { 
+      id: 6, 
+      name: 'Nến thơm Green Tea', 
+      price: 139000, 
+      cat: 'nenthom', 
+      img: 'images/nen-greentea.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
+      desc: 'Thanh khiết • Thư thái' 
+    },
+    { 
+      id: 7, 
+      name: 'Nến thơm Ocean Breeze', 
+      price: 139000, 
+      cat: 'nenthom', 
+      img: 'images/nen-ocean.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+      desc: 'Tươi mát • Sảng khoái' 
+    },
+    { 
+      id: 8, 
+      name: 'Nến thơm Musk Warmth', 
+      price: 149000, 
+      cat: 'nenthom', 
+      img: 'images/nen-musk.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+      desc: 'Quyến rũ • Ấm áp' 
+    },
+    { 
+      id: 9, 
+      name: 'Tinh dầu treo Jasmine', 
+      price: 99000, 
+      cat: 'tinhdau', 
+      img: 'images/tinhdau-jasmine.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+      desc: 'Thanh lịch • Tinh tế' 
+    },
+    { 
+      id: 10, 
+      name: 'Tinh dầu xông Peppermint', 
+      price: 119000, 
+      cat: 'tinhdau', 
+      img: 'images/tinhdau-peppermint.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+      desc: 'Bạc hà • Sảng khoái' 
+    },
+    { 
+      id: 11, 
+      name: 'Hộp quà nến thơm Bloom', 
+      price: 249000, 
+      cat: 'hopqua', 
+      img: 'images/hopqua-bloom.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+      desc: 'Nến thơm + Thiệp tay + Quà tặng' 
+    },
+    { 
+      id: 12, 
+      name: 'Hộp quà cá nhân hóa MỘC', 
+      price: 199000, 
+      cat: 'hopqua', 
+      img: 'images/hopqua-canhan.png', 
+      fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+      desc: 'In tên & Lời nhắn riêng' 
     }
+  ];
+
+  // Render danh sách sản phẩm
+  function renderProducts(items) {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    if (!items || items.length === 0) {
+      grid.innerHTML = `<div class="col-span-full text-center py-10 text-moc-muted text-xs">Không tìm thấy sản phẩm.</div>`;
+      return;
+    }
+
+    grid.innerHTML = items.map(p => `
+      <div onclick="openProductModal(${p.id})" class="bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between cursor-pointer group">
+        <div>
+          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-bg border border-moc-border/40">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='${p.fallbackImg}'">
+          </div>
+          <h4 class="font-semibold text-xs sm:text-sm text-moc-brown line-clamp-1">${p.name}</h4>
+          <p class="text-[11px] text-moc-muted mt-0.5">${p.desc}</p>
+        </div>
+        <div class="mt-3 pt-3 border-t border-moc-border/40 flex items-center justify-between">
+          <span class="font-bold text-xs sm:text-sm text-moc-brown">${p.price.toLocaleString('vi-VN')}đ</span>
+          <button onclick="event.stopPropagation(); openProductModal(${p.id})" class="bg-moc-brown text-white text-[11px] px-3.5 py-1.5 rounded-full hover:bg-moc-brownDark transition">
+            Thêm
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
 
     // Modal Chọn Size Sản Phẩm
     function openProductModal(pId) {
