@@ -145,7 +145,7 @@
       <button onclick="switchTab('contact'); toggleMobileMenu()" class="block w-full text-left py-2 text-moc-text font-medium">Liên hệ</button>
     </div>
   </header>
-
+<div id="tab-home" class="tab-content">
 
   <!-- ================= MAIN CONTENT ================= -->
   <main class="flex-grow">
@@ -1028,5 +1028,12 @@
       e.target.reset();
     }
   </script>
+  // Ép trang web luôn mở Trang chủ khi vừa truy cập
+document.addEventListener('DOMContentLoaded', () => {
+  switchTab('home');
+  if (typeof renderProducts === 'function' && typeof productsData !== 'undefined') {
+    renderProducts(productsData);
+  }
+});
 </body>
 </html>
