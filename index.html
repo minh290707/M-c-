@@ -296,70 +296,226 @@
     </section>
 
 
-    <!-- ================= PAGE 2: SẢN PHẨM ================= -->
-    <section id="page-products" class="page-section hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          <!-- SIDEBAR FILTERS -->
-          <div class="lg:col-span-3 space-y-6">
-            <div class="bg-moc-card p-5 rounded-2xl border border-moc-border/70 space-y-2">
-              <h3 class="font-semibold text-sm text-moc-brown mb-3 uppercase tracking-wider">Danh mục</h3>
-              <button onclick="filterCategory('all')" class="cat-filter-btn w-full text-left px-3 py-2 rounded-xl text-xs font-medium bg-moc-brown text-white transition">Tất cả sản phẩm</button>
-              <button onclick="filterCategory('nenthom')" class="cat-filter-btn w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-moc-muted hover:bg-moc-accent/50 transition">Nến thơm</button>
-              <button onclick="filterCategory('hopqua')" class="cat-filter-btn w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-moc-muted hover:bg-moc-accent/50 transition">Hộp quà tặng</button>
-              <button onclick="filterCategory('canhanhoa')" class="cat-filter-btn w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-moc-muted hover:bg-moc-accent/50 transition">Cá nhân hóa</button>
-              <button onclick="filterCategory('tinhdau')" class="cat-filter-btn w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-moc-muted hover:bg-moc-accent/50 transition">Tinh dầu</button>
-            </div>
+   <!-- ================= TRANG SẢN PHẨM & MODAL ================= -->
 
-            <div class="bg-moc-card p-5 rounded-2xl border border-moc-border/70 space-y-3">
-              <h3 class="font-semibold text-sm text-moc-brown uppercase tracking-wider">Mùi hương</h3>
-              <div class="space-y-2 text-xs text-moc-muted">
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" onchange="applyFilters()" value="hoacaihuong" class="scent-filter rounded text-moc-brown focus:ring-moc-brown accent-moc-brown">
-                  <span>Hoa cúc & Oải hương</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" onchange="applyFilters()" value="vanilla" class="scent-filter rounded text-moc-brown focus:ring-moc-brown accent-moc-brown">
-                  <span>Vanilla ngọt ngào</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" onchange="applyFilters()" value="camngot" class="scent-filter rounded text-moc-brown focus:ring-moc-brown accent-moc-brown">
-                  <span>Cam ngọt & Quýt tươi</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" onchange="applyFilters()" value="godanhuong" class="scent-filter rounded text-moc-brown focus:ring-moc-brown accent-moc-brown">
-                  <span>Gỗ đàn hương & Trầm</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" onchange="applyFilters()" value="traxanh" class="scent-filter rounded text-moc-brown focus:ring-moc-brown accent-moc-brown">
-                  <span>Trà xanh thư giãn</span>
-                </label>
-              </div>
-            </div>
+<!-- 1. BỘ SƯU TẬP SẢN PHẨM -->
+<section id="tab-products" class="tab-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  
+  <!-- Tiêu đề & Bộ lọc danh mục -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+    <div>
+      <h2 class="font-serif text-3xl text-moc-brown font-normal">Bộ sưu tập sản phẩm</h2>
+      <p class="text-xs text-moc-muted mt-1">Lựa chọn mùi hương phù hợp với tâm trạng của bạn</p>
+    </div>
 
-            <div class="bg-moc-card p-5 rounded-2xl border border-moc-border/70 space-y-3">
-              <h3 class="font-semibold text-sm text-moc-brown uppercase tracking-wider">Mức giá</h3>
-              <div class="space-y-2 text-xs text-moc-muted">
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="price" onchange="applyFilters()" value="all" checked class="accent-moc-brown">
-                  <span>Tất cả mức giá</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="price" onchange="applyFilters()" value="under150" class="accent-moc-brown">
-                  <span>Dưới 150.000đ</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="price" onchange="applyFilters()" value="150to250" class="accent-moc-brown">
-                  <span>150.000đ - 250.000đ</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="price" onchange="applyFilters()" value="above250" class="accent-moc-brown">
-                  <span>Trên 250.000đ</span>
-                </label>
-              </div>
-            </div>
+    <!-- Bộ lọc danh mục -->
+    <div class="flex flex-wrap gap-2 text-xs font-medium">
+      <button onclick="filterProducts('all')" class="filter-btn active bg-moc-brown text-white px-4 py-2 rounded-full transition shadow-sm">Tất cả</button>
+      <button onclick="filterProducts('nen')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Nến thơm</button>
+      <button onclick="filterProducts('tinh-dau')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Tinh dầu</button>
+      <button onclick="filterProducts('gift')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Hộp quà</button>
+    </div>
+  </div>
+
+  <!-- Lưới 6+ sản phẩm (Tự động Render bằng JavaScript) -->
+  <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+
+</section>
+
+
+<!-- 2. MODAL CHI TIẾT SẢN PHẨM (CHỌN SIZE 75G & 160G) -->
+<div id="product-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-moc-bg w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-moc-border relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+    
+    <!-- Nút đóng Modal -->
+    <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-moc-card flex items-center justify-center text-moc-brown hover:bg-moc-accent transition z-10">
+      <i class="fa-solid fa-xmark text-sm"></i>
+    </button>
+
+    <!-- Khung nội dung render động qua JavaScript -->
+    <div id="product-modal-content" class="space-y-4"></div>
+
+  </div>
+</div>
+
+
+<!-- 3. CODE JAVASCRIPT XỬ LÝ LOGIC -->
+<script>
+  // Danh sách dữ liệu sản phẩm
+  const productsData = [
+    { id: 1, name: "Nến thơm Lavender Calm", category: "nen", price: 129000, desc: "Thư giãn • Giảm stress", img: "images/nen-lavender.png" },
+    { id: 2, name: "Nến thơm Vanilla Dream", category: "nen", price: 129000, desc: "Ngọt ngào • Ấm áp", img: "images/nen-vanilla.png" },
+    { id: 3, name: "Nến thơm Citrus Fresh", category: "nen", price: 139000, desc: "Tươi mới • Năng lượng", img: "images/nen-citrus.png" },
+    { id: 4, name: "Nến thơm Rose Romance", category: "tinh-dau", price: 149000, desc: "Lãng mạn • Dịu nhẹ", img: "images/tinh-dau-rose.png" },
+    { id: 5, name: "Nến thơm Green Tea", category: "nen", price: 139000, desc: "Thanh khiết • Thư thái", img: "images/nen-greentea.png" },
+    { id: 6, name: "Nến thơm Ocean Breeze", category: "nen", price: 139000, desc: "Tươi mát • Sảng khoái", img: "images/nen-ocean.png" }
+  ];
+
+  let selectedSize = '75g';
+  let currentModalProduct = null;
+
+  // Render lưới sản phẩm
+  function renderProducts(items) {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    if (items.length === 0) {
+      grid.innerHTML = `<div class="col-span-full text-center py-10 text-moc-muted text-xs">Không tìm thấy sản phẩm phù hợp.</div>`;
+      return;
+    }
+
+    grid.innerHTML = items.map(p => `
+      <div onclick="openProductModal(${p.id})" class="bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between cursor-pointer group">
+        <div>
+          <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-bg border border-moc-border/40">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=400&q=80'">
           </div>
+          <h4 class="font-semibold text-xs sm:text-sm text-moc-brown line-clamp-1">${p.name}</h4>
+          <p class="text-[11px] text-moc-muted mt-0.5">${p.desc}</p>
+        </div>
+        <div class="mt-3 pt-3 border-t border-moc-border/40 flex items-center justify-between">
+          <span class="font-bold text-xs sm:text-sm text-moc-brown">${p.price.toLocaleString('vi-VN')}đ</span>
+          <button onclick="event.stopPropagation(); openProductModal(${p.id})" class="bg-moc-brown text-white text-[11px] px-3.5 py-1.5 rounded-full hover:bg-moc-brownDark transition">
+            Thêm
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Lọc sản phẩm theo danh mục
+  function filterProducts(category) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('bg-moc-brown', 'text-white');
+      btn.classList.add('bg-moc-card', 'text-moc-brown');
+    });
+    event.target.classList.remove('bg-moc-card', 'text-moc-brown');
+    event.target.classList.add('bg-moc-brown', 'text-white');
+
+    if (category === 'all') {
+      renderProducts(productsData);
+    } else {
+      renderProducts(productsData.filter(p => p.category === category));
+    }
+  }
+
+  // Mở Modal chi tiết sản phẩm + Chọn Size
+  function openProductModal(pId) {
+    const p = productsData.find(item => item.id === pId);
+    if (!p) return;
+
+    currentModalProduct = p;
+    selectedSize = '75g';
+
+    const price75 = p.price;
+    const price160 = p.price + 90000;
+
+    const modalContent = document.getElementById('product-modal-content');
+    modalContent.innerHTML = `
+      <div class="aspect-square rounded-2xl overflow-hidden border border-moc-border bg-moc-card mb-4">
+        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=400&q=80'">
+      </div>
+      
+      <div>
+        <span class="text-[10px] uppercase tracking-widest text-moc-muted font-semibold">MỘC SCENT</span>
+        <h3 class="font-serif text-xl font-bold text-moc-brown mt-0.5">${p.name}</h3>
+        <p class="text-xs text-moc-muted mt-1">${p.desc}</p>
+      </div>
+
+      <!-- Giá tiền linh hoạt -->
+      <div class="flex items-center justify-between py-2 border-y border-moc-border/60">
+        <span id="modal-product-price" class="text-xl font-bold text-moc-brown">${price75.toLocaleString('vi-VN')}đ</span>
+        <div class="text-xs text-amber-600 space-x-0.5">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <span class="text-moc-muted text-[10px] ml-1">(5.0)</span>
+        </div>
+      </div>
+
+      <!-- Lựa chọn Size (75g & 160g) -->
+      <div class="space-y-2 pt-1">
+        <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn kích thước / Trọng lượng:</label>
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <button type="button" onclick="selectProductSize(this, '75g', ${price75})" class="size-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+            <span class="block text-sm">75g</span>
+            <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
+          </button>
+          <button type="button" onclick="selectProductSize(this, '160g', ${price160})" class="size-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+            <span class="block text-sm">160g</span>
+            <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Thông tin chi tiết nến -->
+      <div class="text-xs text-moc-muted space-y-2 leading-relaxed pt-2">
+        <h5 class="font-semibold text-moc-brown uppercase text-[11px] tracking-wider">Mô tả & Thành phần:</h5>
+        <p>Nến thơm thủ công MỘC Scent được sản xuất từ 100% sáp đậu nành tự nhiên lành tính kết hợp cùng tinh dầu thiên nhiên cao cấp. Bấc nến bằng gỗ sồi tự nhiên phát tiếng nổ lách tách ấm áp khi đốt.</p>
+        
+        <h5 class="font-semibold text-moc-brown uppercase text-[11px] tracking-wider pt-1">Hướng dẫn sử dụng:</h5>
+        <ul class="list-disc pl-4 space-y-0.5 text-[11px]">
+          <li>Đốt nến tối thiểu 1 giờ trong lần sử dụng đầu tiên để sáp tan chảy đều.</li>
+          <li>Cắt bấc nến còn khoảng 0.5cm trước mỗi lần đốt.</li>
+        </ul>
+      </div>
+
+      <!-- Nút Thêm vào giỏ hàng -->
+      <button onclick="addSelectedSizeToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md flex items-center justify-center space-x-2 mt-4">
+        <i class="fa-solid fa-cart-shopping text-xs"></i>
+        <span id="modal-cart-btn-text">Thêm vào giỏ hàng - ${price75.toLocaleString('vi-VN')}đ</span>
+      </button>
+    `;
+
+    document.getElementById('product-detail-modal').classList.remove('hidden');
+  }
+
+  // Chọn Size
+  function selectProductSize(btn, size, price) {
+    selectedSize = size;
+    document.querySelectorAll('.size-opt-btn').forEach(b => {
+      b.classList.remove('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+      b.classList.add('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+    });
+    btn.classList.remove('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+    btn.classList.add('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+
+    document.getElementById('modal-product-price').innerText = price.toLocaleString('vi-VN') + 'đ';
+    document.getElementById('modal-cart-btn-text').innerText = `Thêm vào giỏ hàng - ${price.toLocaleString('vi-VN')}đ`;
+  }
+
+  // Thêm vào giỏ hàng
+  function addSelectedSizeToCart() {
+    if (!currentModalProduct) return;
+
+    const finalPrice = selectedSize === '160g' ? currentModalProduct.price + 90000 : currentModalProduct.price;
+    const itemToAdd = {
+      id: `${currentModalProduct.id}-${selectedSize}`,
+      name: `${currentModalProduct.name} (${selectedSize})`,
+      price: finalPrice,
+      qty: 1,
+      img: currentModalProduct.img
+    };
+
+    if (typeof cart !== 'undefined') {
+      const existing = cart.findIndex(c => c.id === itemToAdd.id);
+      if (existing > -1) cart[existing].qty += 1;
+      else cart.push(itemToAdd);
+      if (typeof updateCartUI === 'function') updateCartUI();
+      if (typeof toggleCartDrawer === 'function') toggleCartDrawer();
+    }
+
+    closeProductModal();
+  }
+
+  // Đóng Modal
+  function closeProductModal() {
+    document.getElementById('product-detail-modal').classList.add('hidden');
+  }
+
+  // Khởi tạo sản phẩm ban đầu
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts(productsData);
+  });
+</script>
 
           <!-- PRODUCT GRID -->
           <div class="lg:col-span-9 space-y-6">
