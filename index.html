@@ -432,7 +432,7 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // Dữ liệu 12 sản phẩm với ảnh dự phòng chống vỡ ảnh (fallbackImg)
+    // Dữ liệu 12 sản phẩm trỏ fallbackImg về thư mục ảnh trong GitHub
     const productsData = [
       { 
         id: 1, 
@@ -440,7 +440,7 @@
         price: 129000, 
         cat: 'nenthom', 
         img: 'images/nen-lavender.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'lavender.png',
         desc: 'Thư giãn • Giảm stress' 
       },
       { 
@@ -449,7 +449,7 @@
         price: 129000, 
         cat: 'nenthom', 
         img: 'images/nen-vanilla.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'vanilla.png',
         desc: 'Ngọt ngào • Ấm áp' 
       },
       { 
@@ -458,7 +458,7 @@
         price: 139000, 
         cat: 'nenthom', 
         img: 'images/nen-citrus.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'citrus.png',
         desc: 'Tươi mới • Năng lượng' 
       },
       { 
@@ -467,7 +467,7 @@
         price: 149000, 
         cat: 'nenthom', 
         img: 'images/nen-sandalwood.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'sandalwood.png',
         desc: 'Trầm ấm • Tĩnh lặng' 
       },
       { 
@@ -476,7 +476,7 @@
         price: 149000, 
         cat: 'nenthom', 
         img: 'images/nen-rose.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'rose.png',
         desc: 'Lãng mạn • Dịu nhẹ' 
       },
       { 
@@ -485,7 +485,7 @@
         price: 139000, 
         cat: 'nenthom', 
         img: 'images/nen-greentea.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'greentea.png',
         desc: 'Thanh khiết • Thư thái' 
       },
       { 
@@ -494,7 +494,7 @@
         price: 139000, 
         cat: 'nenthom', 
         img: 'images/nen-ocean.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'ocean.png',
         desc: 'Tươi mát • Sảng khoái' 
       },
       { 
@@ -503,7 +503,7 @@
         price: 149000, 
         cat: 'nenthom', 
         img: 'images/nen-musk.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: 'musk.png',
         desc: 'Quyến rũ • Ấm áp' 
       },
       { 
@@ -512,7 +512,7 @@
         price: 99000, 
         cat: 'tinhdau', 
         img: 'images/tinhdau-jasmine.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: '.png',
         desc: 'Thanh lịch • Tinh tế' 
       },
       { 
@@ -521,7 +521,7 @@
         price: 119000, 
         cat: 'tinhdau', 
         img: 'images/tinhdau-peppermint.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: '.png',
         desc: 'Bạc hà • Sảng khoái' 
       },
       { 
@@ -530,7 +530,7 @@
         price: 249000, 
         cat: 'hopqua', 
         img: 'images/hopqua-bloom.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: '.png',
         desc: 'Nến thơm + Thiệp tay + Quà tặng' 
       },
       { 
@@ -539,7 +539,7 @@
         price: 199000, 
         cat: 'hopqua', 
         img: 'images/hopqua-canhan.png', 
-        fallbackImg: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=80',
+        fallbackImg: '.png',
         desc: 'In tên & Lời nhắn riêng' 
       }
     ];
