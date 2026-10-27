@@ -6,9 +6,8 @@
   <title>MỘC Scent - Nến Thơm & Quà Tặng Cá Nhân Hóa</title>
 
   <!-- Favicon Logo tab trình duyệt -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<!-- Ép trình duyệt cập nhật Favicon mới -->
-<link rel="icon" type="image/png" href="logo1.png?v=2">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="logo1.png?v=2">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -71,15 +70,15 @@
       border-radius: 3px;
     }
 
-    .nav-link {
+    .nav-btn {
       position: relative;
       transition: color 0.2s;
     }
-    .nav-link.active {
+    .nav-btn.active {
       color: #5c4033;
-      font-weight: 600;
+      font-weight: 700;
     }
-    .nav-link.active::after {
+    .nav-btn.active::after {
       content: '';
       position: absolute;
       bottom: -6px;
@@ -110,12 +109,12 @@
 
       <!-- Navigation Menu -->
       <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-moc-brown/80">
-  <button id="nav-home" onclick="switchTab('home')" class="nav-btn active hover:text-moc-brown transition py-1">Trang chủ</button>
-  <button id="nav-products" onclick="switchTab('products')" class="nav-btn hover:text-moc-brown transition py-1">Sản phẩm</button>
-  <button id="nav-custom-gift" onclick="switchTab('custom-gift')" class="nav-btn hover:text-moc-brown transition py-1">Hộp quà cá nhân hóa</button>
-  <button id="nav-about" onclick="switchTab('about')" class="nav-btn hover:text-moc-brown transition py-1">Về MỘC</button>
-  <button id="nav-contact" onclick="switchTab('contact')" class="nav-btn hover:text-moc-brown transition py-1">Liên hệ</button>
-</nav>
+        <button id="nav-home" onclick="switchTab('home')" class="nav-btn active hover:text-moc-brown transition py-1">Trang chủ</button>
+        <button id="nav-products" onclick="switchTab('products')" class="nav-btn hover:text-moc-brown transition py-1">Sản phẩm</button>
+        <button id="nav-custom-gift" onclick="switchTab('custom-gift')" class="nav-btn hover:text-moc-brown transition py-1">Hộp quà cá nhân hóa</button>
+        <button id="nav-about" onclick="switchTab('about')" class="nav-btn hover:text-moc-brown transition py-1">Về MỘC</button>
+        <button id="nav-contact" onclick="switchTab('contact')" class="nav-btn hover:text-moc-brown transition py-1">Liên hệ</button>
+      </nav>
 
       <!-- Action Icons -->
       <div class="flex items-center space-x-5 text-moc-brown">
@@ -145,14 +144,13 @@
       <button onclick="switchTab('contact'); toggleMobileMenu()" class="block w-full text-left py-2 text-moc-text font-medium">Liên hệ</button>
     </div>
   </header>
-<div id="tab-home" class="tab-content">
 
   <!-- ================= MAIN CONTENT ================= -->
   <main class="flex-grow">
 
-    <!-- ================= PAGE 1: TRANG CHỦ ================= -->
-    <section id="page-home" class="page-section">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <!-- ================= TRANG 1: TRANG CHỦ ================= -->
+    <div id="tab-home" class="tab-content">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#f0eae0] rounded-3xl p-6 sm:p-10 border border-moc-border relative overflow-hidden shadow-sm">
           
           <div class="md:col-span-5 z-10 flex flex-col justify-center space-y-6 pr-0 md:pr-4">
@@ -173,7 +171,7 @@
 
           <div class="md:col-span-7 relative flex items-center justify-center">
             <div class="relative rounded-2xl overflow-hidden shadow-md w-full max-h-[420px]">
-              <img src="trangchu.png" alt="Mộc Scent Banner" class="w-full h-full object-cover">
+              <img src="trangchu.png" alt="Mộc Scent Banner" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80'">
             </div>
 
             <div class="hidden sm:block absolute -bottom-4 -right-2 bg-[#fdfbf7] p-4 rounded-xl shadow-lg border border-moc-border max-w-[220px] rotate-2 transform hover:rotate-0 transition duration-300">
@@ -188,7 +186,7 @@
           </div>
 
         </div>
-      </div>
+      </section>
 
       <!-- VALUE PROPOSITION BAR -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -228,529 +226,212 @@
       </div>
 
       <!-- FEATURED CATEGORIES & QUOTE BANNER SECTION -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <div class="flex items-center justify-between mb-8">
-    <h2 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal">Danh mục nổi bật</h2>
-    <button onclick="switchTab('products')" class="text-xs sm:text-sm text-moc-brown font-semibold hover:underline flex items-center space-x-1">
-      <span>Xem tất cả</span>
-      <i class="fa-solid fa-arrow-right text-[10px]"></i>
-    </button>
-  </div>
-
-  <!-- Bố cục 12 cột: 4 danh mục bên trái (8 cột) + Banner quote bên phải (4 cột) -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-    
-    <!-- 4 Danh mục nhỏ dàn đều -->
-    <div class="lg:col-span-7 xl:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-      
-      <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
-        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-          <img src="nenthom.png" alt="Hộp quà tặng" class="w-full h-full object-cover">
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-moc-brown">Nến thơm</span>
-          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-        </div>
-      </div>
-
-      <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
-        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-          <img src="hopqua.png" alt="Hộp quà tặng" class="w-full h-full object-cover">
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-moc-brown">Hộp quà tặng</span>
-          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-        </div>
-      </div>
-
-      <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
-        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-          <img src="canhanhoa.png" alt="Hộp quà tặng" class="w-full h-full object-cover">
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-moc-brown">Cá nhân hóa</span>
-          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-        </div>
-      </div>
-
-      <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
-        <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
-          <img src="tinhdau.png" alt="Hộp quà tặng" class="w-full h-full object-cover">
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-moc-brown">Tinh dầu</span>
-          <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Ô banner ảnh quote đặt bên phải, chiều cao khớp trọn vẹn với 4 ô bên trái -->
-    <div class="lg:col-span-5 xl:col-span-4 rounded-2xl overflow-hidden border border-moc-border/70 shadow-sm relative min-h-[200px]">
-      <img src="loinoi.png" alt="Mỗi mùi hương là một câu chuyện" class="w-full h-full object-cover">
-    </div>
-
- </div> <!-- Đóng div container -->
-</div> <!-- 🔴 ĐÓNG THẺ TAB-HOME TẠI ĐÂY -->
-
-<!-- TRANG SẢN PHẨM (TAB 2) -->
-<div id="tab-products" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  
-  <!-- Tiêu đề & Bộ lọc danh mục -->
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-    <div>
-      <h2 class="font-serif text-3xl text-moc-brown font-normal">Bộ sưu tập sản phẩm</h2>
-      <p class="text-xs text-moc-muted mt-1">Lựa chọn mùi hương phù hợp với tâm trạng của bạn</p>
-    </div>
-
-    <!-- Nút Lọc Danh Mục -->
-    <div class="flex flex-wrap gap-2 text-xs font-medium">
-      <button onclick="filterProducts('all')" class="filter-btn active bg-moc-brown text-white px-4 py-2 rounded-full transition shadow-sm">Tất cả</button>
-      <button onclick="filterProducts('nen')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Nến thơm</button>
-      <button onclick="filterProducts('tinh-dau')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Tinh dầu</button>
-      <button onclick="filterProducts('gift')" class="filter-btn bg-moc-card text-moc-brown hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Hộp quà</button>
-    </div>
-  </div>
-
-  <!-- Lưới hiển thị 6 sản phẩm -->
-  <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
-
-</div>
-
-
-<!-- ================= PRODUCT DETAIL MODAL (CHỌN SIZE 75G & 160G) ================= -->
-<div id="product-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-  <div class="bg-moc-bg w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-moc-border relative max-h-[90vh] overflow-y-auto custom-scrollbar">
-    
-    <!-- Nút đóng Modal -->
-    <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-moc-card flex items-center justify-center text-moc-brown hover:bg-moc-accent transition z-10">
-      <i class="fa-solid fa-xmark text-sm"></i>
-    </button>
-
-    <!-- Nội dung chi tiết render qua JS -->
-    <div id="product-modal-content" class="space-y-4"></div>
-
-  </div>
-</div>
-   
-          <!-- PRODUCT GRID -->
-          <div class="lg:col-span-9 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-moc-card px-5 py-4 rounded-2xl border border-moc-border/70">
-              <div>
-                <h1 id="catalog-title" class="font-serif text-xl font-semibold text-moc-brown">Nến thơm</h1>
-                <p class="text-xs text-moc-muted">Hương thơm dịu dàng, lan tỏa cảm xúc thư thái</p>
-              </div>
-              <div class="flex items-center space-x-3 text-xs">
-                <span class="text-moc-muted whitespace-nowrap">Sắp xếp theo:</span>
-                <select id="sort-select" onchange="applyFilters()" class="bg-moc-bg border border-moc-border rounded-xl px-3 py-1.5 font-medium text-moc-brown focus:outline-none">
-                  <option value="pop">Phổ biến nhất</option>
-                  <option value="low">Giá: Thấp đến Cao</option>
-                  <option value="high">Giá: Cao đến Thấp</option>
-                </select>
-              </div>
-            </div>
-
-            <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              <!-- Dynamically Populated -->
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================= PAGE 3: HỘP QUÀ CÁ NHÂN HÓA ================= -->
-    <section id="page-custom-gift" class="page-section hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <nav class="flex text-xs text-moc-muted mb-6 space-x-2">
-          <button onclick="switchTab('home')" class="hover:underline">Trang chủ</button>
-          <span>/</span>
-          <button onclick="switchTab('products')" class="hover:underline">Hộp quà tặng</button>
-          <span>/</span>
-          <span class="text-moc-brown font-semibold">Hộp quà nến thơm cá nhân hóa</span>
-        </nav>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          <div class="lg:col-span-6 grid grid-cols-12 gap-4">
-            <div class="col-span-3 sm:col-span-2 space-y-3">
-              <button onclick="changeMainImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border-2 border-moc-brown">
-                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-              </button>
-              <button onclick="changeMainImage('https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
-                <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-              </button>
-              <button onclick="changeMainImage('https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
-                <img src="https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-              </button>
-              <button onclick="changeMainImage('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
-                <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-              </button>
-            </div>
-
-            <div class="col-span-9 sm:col-span-10 relative bg-moc-card rounded-3xl overflow-hidden border border-moc-border p-2">
-              <img id="main-gift-img" src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Hộp quà nến thơm" class="w-full h-[400px] sm:h-[460px] object-cover rounded-2xl">
-              
-              <div class="absolute bottom-6 right-6 bg-[#fdfbf7] p-4 rounded-xl shadow-xl border border-moc-border max-w-[240px] rotate-[-2deg]">
-                <span class="text-[10px] uppercase tracking-wider text-moc-muted block">Thiệp MỘC Scent</span>
-                <p id="live-card-text" class="font-handwriting text-xl text-moc-brown leading-tight min-h-[44px] break-words">
-                  Cảm ơn bạn đã luôn ở đây ♡
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-6 space-y-6">
-            <div>
-              <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà nến thơm cá nhân hóa</h1>
-              <p class="text-xs sm:text-sm text-moc-muted">Gửi yêu thương theo cách của riêng bạn</p>
-              
-              <div class="flex items-center space-x-3 mt-3">
-                <span class="text-2xl font-bold text-moc-brown">199.000đ</span>
-                <div class="flex items-center text-xs text-amber-600 space-x-1">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star-half-stroke"></i>
-                  <span class="text-moc-muted font-medium ml-1">(4.8) | 120 đánh giá</span>
-                </div>
-              </div>
-            </div>
-
-            <hr class="border-moc-border">
-
-            <div class="space-y-3">
-              <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn mùi hương</label>
-              <div class="grid grid-cols-4 gap-3 text-center">
-                <button onclick="selectScent(this, 'Lavender')" class="scent-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-medium text-moc-brown transition">
-                  <div class="w-7 h-7 rounded-full bg-purple-200 mx-auto mb-1 flex items-center justify-center text-purple-700">🪻</div>
-                  Lavender
-                </button>
-                <button onclick="selectScent(this, 'Vanilla')" class="scent-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition">
-                  <div class="w-7 h-7 rounded-full bg-amber-100 mx-auto mb-1 flex items-center justify-center text-amber-700">🍦</div>
-                  Vanilla
-                </button>
-                <button onclick="selectScent(this, 'Citrus')" class="scent-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition">
-                  <div class="w-7 h-7 rounded-full bg-orange-100 mx-auto mb-1 flex items-center justify-center text-orange-600">🍊</div>
-                  Citrus
-                </button>
-                <button onclick="selectScent(this, 'Sandalwood')" class="scent-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition">
-                  <div class="w-7 h-7 rounded-full bg-yellow-900/10 mx-auto mb-1 flex items-center justify-center text-amber-900">🪵</div>
-                  Sandalwood
-                </button>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <div class="flex justify-between items-center text-xs">
-                <label class="font-semibold text-moc-brown uppercase tracking-wider">Thông điệp cá nhân hóa (tùy chọn)</label>
-                <span id="char-counter" class="text-moc-muted">0/100</span>
-              </div>
-              <textarea 
-                id="custom-message-input"
-                oninput="updateLiveCard(this.value)"
-                maxlength="100"
-                rows="3"
-                placeholder="Nhập lời nhắn của bạn... (Tối đa 100 ký tự)" 
-                class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:ring-2 focus:ring-moc-brown text-sm text-moc-brown placeholder-moc-muted/60 resize-none transition"
-              ></textarea>
-            </div>
-
-            <div class="flex items-center space-x-3 bg-moc-card p-3 rounded-xl border border-moc-border/60 text-xs">
-              <input type="checkbox" id="gift-card-check" checked class="w-4 h-4 rounded text-moc-brown accent-moc-brown cursor-pointer">
-              <label for="gift-card-check" class="cursor-pointer text-moc-brown font-medium">Kèm thiệp chúc mừng viết tay miễn phí</label>
-            </div>
-
-            <div class="flex items-center space-x-4 pt-2">
-              <div class="flex items-center border border-moc-border rounded-full bg-moc-bg px-3 py-1.5">
-                <button onclick="adjustDetailQty(-1)" class="w-7 h-7 text-moc-brown font-bold text-lg hover:opacity-75">-</button>
-                <span id="detail-qty-display" class="w-8 text-center font-semibold text-sm text-moc-brown">1</span>
-                <button onclick="adjustDetailQty(1)" class="w-7 h-7 text-moc-brown font-bold text-lg hover:opacity-75">+</button>
-              </div>
-
-              <button onclick="addCustomBoxToCart()" class="flex-grow bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 px-6 rounded-full font-medium text-sm transition shadow-md flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-cart-shopping text-xs"></i>
-                <span>Thêm vào giỏ hàng</span>
-              </button>
-            </div>
-
-            <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-moc-muted pt-4 border-t border-moc-border/60">
-              <div class="flex items-center justify-center space-x-1">
-                <i class="fa-solid fa-truck text-moc-brown"></i>
-                <span>Giao toàn quốc 2-5 ngày</span>
-              </div>
-              <div class="flex items-center justify-center space-x-1">
-                <i class="fa-solid fa-rotate-left text-moc-brown"></i>
-                <span>Đổi trả trong 7 ngày</span>
-              </div>
-              <div class="flex items-center justify-center space-x-1">
-                <i class="fa-solid fa-shield text-moc-brown"></i>
-                <span>Thanh toán an toàn</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="mt-16 bg-moc-card rounded-3xl p-6 sm:p-8 border border-moc-border">
-          <div class="flex border-b border-moc-border/70 space-x-8 text-xs sm:text-sm mb-6">
-            <button onclick="switchDetailTab('desc')" id="tab-btn-desc" class="tab-btn active pb-3 transition">Mô tả sản phẩm</button>
-            <button onclick="switchDetailTab('ingr')" id="tab-btn-ingr" class="tab-btn pb-3 text-moc-muted hover:text-moc-brown transition">Thành phần</button>
-            <button onclick="switchDetailTab('usage')" id="tab-btn-usage" class="tab-btn pb-3 text-moc-muted hover:text-moc-brown transition">Hướng dẫn sử dụng</button>
-            <button onclick="switchDetailTab('reviews')" id="tab-btn-reviews" class="tab-btn pb-3 text-moc-muted hover:text-moc-brown transition">Đánh giá (120)</button>
-          </div>
-
-          <div id="tab-content-desc" class="tab-content text-xs sm:text-sm text-moc-muted leading-relaxed space-y-3">
-            <p>Hộp quà nến thơm MỘC Scent là sự kết hợp hoàn hảo giữa hương thơm tinh tế, thiết kế tối giản và thông điệp cá nhân hóa. Đây là món quà ý nghĩa cho những dịp đặc biệt như sinh nhật, kỷ niệm, tốt nghiệp hay đơn giản là để gửi lời cảm ơn, yêu thương đến người quan trọng.</p>
-            <p>Mỗi sản phẩm đều được chúng mình chau chuốt tỉ mỉ từ khâu chọn nguyên liệu đến đóng gói thủ công bằng hộp giấy kraft mộc mạc.</p>
-          </div>
-
-          <div id="tab-content-ingr" class="tab-content hidden text-xs sm:text-sm text-moc-muted leading-relaxed space-y-2">
-            <ul class="list-disc pl-5 space-y-1">
-              <li>100% Sáp đậu nành tự nhiên (Soy Wax) nhập khẩu không tạo khói độc.</li>
-              <li>Tinh dầu thiên nhiên tinh khiết (Essential Oils) chứng nhận an toàn.</li>
-              <li>Bấc nến làm từ gỗ sồi cao cấp phát ra tiếng tách tách thư giãn khi đốt.</li>
-              <li>Hộp đựng bằng giấy kraft tái chế thân thiện với môi trường.</li>
-            </ul>
-          </div>
-
-          <div id="tab-content-usage" class="tab-content hidden text-xs sm:text-sm text-moc-muted leading-relaxed space-y-2">
-            <ol class="list-decimal pl-5 space-y-1">
-              <li>Cắt bấc nến còn khoảng 0.5cm trước mỗi lần đốt.</li>
-              <li>Đốt nến ít nhất 1-2 giờ trong lần đầu tiên để mặt nến tan chảy đều.</li>
-              <li>Không đốt nến quá 4 giờ liên tục.</li>
-              <li>Để xa tầm tay trẻ em, thú nuôi và các vật liệu dễ cháy.</li>
-            </ol>
-          </div>
-
-          <div id="tab-content-reviews" class="tab-content hidden text-xs sm:text-sm text-moc-muted space-y-4">
-            <div class="p-4 bg-moc-bg rounded-2xl border border-moc-border/60 space-y-1">
-              <div class="flex justify-between items-center">
-                <span class="font-semibold text-moc-brown">Nguyễn Minh Trâm</span>
-                <span class="text-[10px] text-moc-muted">2 ngày trước</span>
-              </div>
-              <div class="text-amber-600 text-[10px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              <p>Mùi Lavender thơm dễ chịu cực kỳ, hộp gói rất đẹp và nét chữ viết thiệp xinh xắn lắm luôn ạ!</p>
-            </div>
-          </div>
-
-          <div class="mt-8 text-right pr-4">
-            <span class="font-handwriting text-2xl sm:text-3xl text-moc-brown/80">
-              Gửi lời chưa nói cùng MỘC Scent ♡
-            </span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= PAGE 4: VỀ MỘC ================= -->
-    <section id="page-about" class="page-section hidden">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-        <div class="text-center space-y-4">
-          <span class="text-xs uppercase tracking-[0.3em] font-semibold text-moc-muted">CÂU CHUYỆN THƯƠNG HIỆU</span>
-          <h1 class="font-serif text-3xl sm:text-4xl text-moc-brown font-normal">Lắng nghe cảm xúc từ những điều mộc mạc</h1>
-          <p class="text-sm text-moc-muted max-w-2xl mx-auto leading-relaxed">
-            MỘC Scent được ra đời từ niềm đam mê với những mùi hương tự nhiên và mong muốn tạo ra những món quà cá nhân hóa chứa đựng chân thành.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-moc-card p-6 sm:p-10 rounded-3xl border border-moc-border">
-          <div class="rounded-2xl overflow-hidden aspect-square border border-moc-border">
-            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80" alt="Mộc Scent Craft" class="w-full h-full object-cover">
-          </div>
-          <div class="space-y-4 text-xs sm:text-sm text-moc-muted leading-relaxed">
-            <h3 class="font-serif text-2xl text-moc-brown font-normal">Sáp đậu nành & Tinh dầu tự nhiên</h3>
-            <p>Mỗi hũ nến tại MỘC đều được rót tay thủ công cẩn thận. Chúng mình chọn sáp đậu nành lành tính, không gây khói độc hại và tinh dầu chiết xuất thiên nhiên để bạn luôn yên tâm tận hưởng không gian thư thái nhất.</p>
-            <p>Không chỉ là một hũ nến thơm, MỘC mong muốn đồng hành cùng bạn gửi gắm những tâm tư, lời chúc ngọt ngào đến người thân yêu qua từng nét chữ in trên nhãn nến và thiệp mừng đi kèm.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================= PAGE 5: LIÊN HỆ ================= -->
-    <section id="page-contact" class="page-section hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center space-y-3 mb-12">
-          <span class="text-xs uppercase tracking-[0.3em] font-semibold text-moc-muted">KẾT NỐI VỚI MỘC</span>
-          <h1 class="font-serif text-3xl sm:text-4xl text-moc-brown font-normal">Liên hệ & Thắc mắc</h1>
-          <p class="text-xs sm:text-sm text-moc-muted">MỘC luôn sẵn sàng lắng nghe và hỗ trợ bạn 24/7</p>
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal">Danh mục nổi bật</h2>
+          <button onclick="switchTab('products')" class="text-xs sm:text-sm text-moc-brown font-semibold hover:underline flex items-center space-x-1">
+            <span>Xem tất cả</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div class="lg:col-span-5 bg-moc-card p-6 sm:p-8 rounded-3xl border border-moc-border space-y-6">
-            <h3 class="font-serif text-xl text-moc-brown font-normal">Thông tin cửa hàng</h3>
-            
-            <div class="space-y-4 text-xs sm:text-sm text-moc-muted">
-              <div class="flex items-start space-x-3">
-                <i class="fa-solid fa-location-dot text-moc-brown mt-1"></i>
-                <div>
-                  <strong class="text-moc-brown block">Địa chỉ:</strong>
-                  <span>Phố Đường Tàu, Trần Phú, Hoàn Kiếm, Hà Nội</span>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-7 xl:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+                <img src="nenthom.png" alt="Nến thơm" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=400&q=80'">
               </div>
-
-              <div class="flex items-start space-x-3">
-                <i class="fa-solid fa-phone text-moc-brown mt-1"></i>
-                <div>
-                  <strong class="text-moc-brown block">Hotline / Zalo:</strong>
-                  <span>0988 123 456</span>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <i class="fa-regular fa-envelope text-moc-brown mt-1"></i>
-                <div>
-                  <strong class="text-moc-brown block">Email:</strong>
-                  <span>contact@mocscent.vn</span>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <i class="fa-regular fa-clock text-moc-brown mt-1"></i>
-                <div>
-                  <strong class="text-moc-brown block">Giờ mở cửa:</strong>
-                  <span>08:30 - 21:30 (Hằng ngày)</span>
-                </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-moc-brown">Nến thơm</span>
+                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
               </div>
             </div>
 
-            <div class="pt-4 border-t border-moc-border/60">
-              <span class="text-xs font-semibold text-moc-brown uppercase tracking-wider block mb-3">Theo dõi chúng mình</span>
-              <div class="flex space-x-3">
-                <a href="#" class="w-9 h-9 rounded-full bg-moc-bg flex items-center justify-center text-moc-brown hover:bg-moc-brown hover:text-white transition"><i class="fa-brands fa-facebook-f text-xs"></i></a>
-                <a href="#" class="w-9 h-9 rounded-full bg-moc-bg flex items-center justify-center text-moc-brown hover:bg-moc-brown hover:text-white transition"><i class="fa-brands fa-instagram text-xs"></i></a>
-                <a href="#" class="w-9 h-9 rounded-full bg-moc-bg flex items-center justify-center text-moc-brown hover:bg-moc-brown hover:text-white transition"><i class="fa-brands fa-tiktok text-xs"></i></a>
+            <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+                <img src="hopqua.png" alt="Hộp quà tặng" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80'">
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-moc-brown">Hộp quà tặng</span>
+                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+              </div>
+            </div>
+
+            <div onclick="switchTab('custom-gift')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+                <img src="canhanhoa.png" alt="Cá nhân hóa" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80'">
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-moc-brown">Cá nhân hóa</span>
+                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
+              </div>
+            </div>
+
+            <div onclick="switchTab('products')" class="group cursor-pointer bg-moc-card rounded-2xl p-4 border border-moc-border/50 hover:shadow-md transition flex flex-col justify-between">
+              <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-accent/30">
+                <img src="tinhdau.png" alt="Tinh dầu" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80'">
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-moc-brown">Tinh dầu</span>
+                <i class="fa-solid fa-arrow-right text-[10px] text-moc-muted group-hover:translate-x-1 transition"></i>
               </div>
             </div>
           </div>
 
-          <div class="lg:col-span-7 bg-moc-card p-6 sm:p-8 rounded-3xl border border-moc-border">
-            <form onsubmit="handleContactSubmit(event)" class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-2">Họ và tên *</label>
-                  <input type="text" required placeholder="Nhập tên của bạn" class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:ring-2 focus:ring-moc-brown text-sm">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-2">Số điện thoại *</label>
-                  <input type="tel" required placeholder="Nhập số điện thoại" class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:ring-2 focus:ring-moc-brown text-sm">
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-2">Email</label>
-                <input type="email" placeholder="example@gmail.com" class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:ring-2 focus:ring-moc-brown text-sm">
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-2">Lời nhắn cho MỘC *</label>
-                <textarea rows="4" required placeholder="Nội dung thắc mắc hoặc đặt hàng..." class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:ring-2 focus:ring-moc-brown text-sm resize-none"></textarea>
-              </div>
-
-              <button type="submit" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full text-sm font-medium transition shadow-md">
-                Gửi lời nhắn
-              </button>
-            </form>
+          <div class="lg:col-span-5 xl:col-span-4 rounded-2xl overflow-hidden border border-moc-border/70 shadow-sm relative min-h-[200px]">
+            <img src="loinoi.png" alt="Mỗi mùi hương là một câu chuyện" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80'">
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
+
+    <!-- ================= TRANG 2: TRANG SẢN PHẨM ================= -->
+    <div id="tab-products" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="font-serif text-3xl text-moc-brown font-normal">Bộ sưu tập sản phẩm</h2>
+          <p class="text-xs text-moc-muted mt-1">Lựa chọn mùi hương phù hợp với tâm trạng của bạn</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 text-xs font-medium">
+          <button onclick="filterCategory('all')" class="cat-filter-btn active bg-moc-brown text-white px-4 py-2 rounded-full transition shadow-sm">Tất cả</button>
+          <button onclick="filterCategory('nenthom')" class="cat-filter-btn text-moc-muted hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Nến thơm</button>
+          <button onclick="filterCategory('tinhdau')" class="cat-filter-btn text-moc-muted hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Tinh dầu</button>
+          <button onclick="filterCategory('hopqua')" class="cat-filter-btn text-moc-muted hover:bg-moc-accent/50 px-4 py-2 rounded-full transition">Hộp quà</button>
+        </div>
+      </div>
+
+      <!-- Lưới sản phẩm duy nhất -->
+      <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+    </div>
+
+
+    <!-- ================= TRANG 3: HỘP QUÀ CÁ NHÂN HÓA ================= -->
+    <div id="tab-custom-gift" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <nav class="flex text-xs text-moc-muted mb-6 space-x-2">
+        <button onclick="switchTab('home')" class="hover:underline">Trang chủ</button>
+        <span>/</span>
+        <button onclick="switchTab('products')" class="hover:underline">Hộp quà tặng</button>
+        <span>/</span>
+        <span class="text-moc-brown font-semibold">Hộp quà nến thơm cá nhân hóa</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-6 grid grid-cols-12 gap-4">
+          <div class="col-span-3 sm:col-span-2 space-y-3">
+            <button onclick="changeMainImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border-2 border-moc-brown">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
+            </button>
+            <button onclick="changeMainImage('https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
+              <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
+            </button>
+          </div>
+
+          <div class="col-span-9 sm:col-span-10 relative bg-moc-card rounded-3xl overflow-hidden border border-moc-border p-2">
+            <img id="main-gift-img" src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Hộp quà nến thơm" class="w-full h-[400px] sm:h-[460px] object-cover rounded-2xl">
+            
+            <div class="absolute bottom-6 right-6 bg-[#fdfbf7] p-4 rounded-xl shadow-xl border border-moc-border max-w-[240px] rotate-[-2deg]">
+              <span class="text-[10px] uppercase tracking-wider text-moc-muted block">Thiệp MỘC Scent</span>
+              <p id="live-card-text" class="font-handwriting text-xl text-moc-brown leading-tight min-h-[44px] break-words">
+                Cảm ơn bạn đã luôn ở đây ♡
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà nến thơm cá nhân hóa</h1>
+            <p class="text-xs sm:text-sm text-moc-muted">Gửi yêu thương theo cách của riêng bạn</p>
+            <div class="flex items-center space-x-3 mt-3">
+              <span class="text-2xl font-bold text-moc-brown">199.000đ</span>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn mùi hương</label>
+            <div class="grid grid-cols-4 gap-3 text-center">
+              <button onclick="selectScent(this, 'Lavender')" class="scent-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-medium text-moc-brown transition">
+                Lavender
+              </button>
+              <button onclick="selectScent(this, 'Vanilla')" class="scent-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition">
+                Vanilla
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <textarea 
+              id="custom-message-input"
+              oninput="updateLiveCard(this.value)"
+              maxlength="100"
+              rows="3"
+              placeholder="Nhập lời nhắn của bạn..." 
+              class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none text-sm text-moc-brown"
+            ></textarea>
+          </div>
+
+          <button onclick="addCustomBoxToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
+            Thêm vào giỏ hàng
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= TRANG 4: VỀ MỘC ================= -->
+    <div id="tab-about" class="tab-content hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-xs uppercase tracking-[0.3em] font-semibold text-moc-muted">CÂU CHUYỆN THƯƠNG HIỆU</span>
+        <h1 class="font-serif text-3xl sm:text-4xl text-moc-brown font-normal">Lắng nghe cảm xúc từ những điều mộc mạc</h1>
+      </div>
+    </div>
+
+
+    <!-- ================= TRANG 5: LIÊN HỆ ================= -->
+    <div id="tab-contact" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center space-y-3 mb-12">
+        <h1 class="font-serif text-3xl sm:text-4xl text-moc-brown font-normal">Liên hệ & Thắc mắc</h1>
+      </div>
+    </div>
 
   </main>
 
 
   <!-- ================= FOOTER ================= -->
   <footer class="bg-[#ebe3d5] border-t border-moc-border py-10 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-xs text-moc-muted">
-        <div class="space-y-3">
-          <a href="#" onclick="switchTab('home')" class="flex flex-col items-start">
-            <span class="font-serif text-2xl font-bold tracking-widest text-moc-brown">MỘC</span>
-            <span class="text-[9px] tracking-[0.25em] text-moc-muted uppercase font-light">Scent</span>
-          </a>
-          <p class="leading-relaxed">Nến thơm & Quà tặng cá nhân hóa thủ công mang lại sự thư thái cho tâm hồn.</p>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-semibold text-moc-brown uppercase tracking-wider text-xs">Về MỘC Scent</h4>
-          <ul class="space-y-1.5">
-            <li><button onclick="switchTab('about')" class="hover:underline">Câu chuyện thương hiệu</button></li>
-            <li><button onclick="switchTab('products')" class="hover:underline">Sản phẩm nổi bật</button></li>
-            <li><button onclick="switchTab('custom-gift')" class="hover:underline">Hộp quà cá nhân hóa</button></li>
-          </ul>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-semibold text-moc-brown uppercase tracking-wider text-xs">Chính sách</h4>
-          <ul class="space-y-1.5">
-            <li><a href="#" class="hover:underline">Chính sách đổi trả 7 ngày</a></li>
-            <li><a href="#" class="hover:underline">Chính sách giao hàng</a></li>
-            <li><a href="#" class="hover:underline">Bảo mật thông tin</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-semibold text-moc-brown uppercase tracking-wider text-xs">Đăng ký nhận ưu đãi</h4>
-          <div class="flex items-center">
-            <input type="email" placeholder="Nhập email..." class="bg-moc-bg px-3 py-2 rounded-l-xl text-xs border border-moc-border border-r-0 focus:outline-none w-full">
-            <button class="bg-moc-brown text-white px-3 py-2 rounded-r-xl font-medium text-xs hover:bg-moc-brownDark transition">Gửi</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="border-t border-moc-border/60 pt-6 text-center text-[11px] text-moc-muted">
-        © 2026 MỘC Scent. Tất cả các quyền được bảo lưu. Thiết kế mộc mạc & tinh tế.
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-moc-muted">
+      © 2026 MỘC Scent. Tất cả các quyền được bảo lưu.
     </div>
   </footer>
 
 
-  <!-- ================= SHOPPING CART DRAWER ================= -->
-  <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden transition-opacity"></div>
-
-  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[380px] bg-moc-bg z-50 shadow-2xl transform translate-x-full transition duration-300 flex flex-col justify-between">
-    <div class="p-5 border-b border-moc-border flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <i class="fa-solid fa-bag-shopping text-moc-brown"></i>
-        <h3 class="font-serif font-semibold text-lg text-moc-brown">Giỏ hàng của bạn</h3>
-      </div>
-      <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-moc-accent/50 flex items-center justify-center text-moc-brown hover:bg-moc-accent transition">
+  <!-- ================= PRODUCT DETAIL MODAL (CHỌN SIZE 75G & 160G) ================= -->
+  <div id="product-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-moc-bg w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-moc-border relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-moc-card flex items-center justify-center text-moc-brown hover:bg-moc-accent transition z-10">
         <i class="fa-solid fa-xmark text-sm"></i>
       </button>
-    </div>
-
-    <div id="cart-items-container" class="flex-grow p-5 overflow-y-auto space-y-4"></div>
-
-    <div class="p-5 border-t border-moc-border bg-moc-card space-y-3">
-      <div class="flex justify-between items-center text-sm font-semibold text-moc-brown">
-        <span>Tổng tiền:</span>
-        <span id="cart-total-price" class="text-base text-moc-brown">0đ</span>
-      </div>
-      <button onclick="checkoutCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
-        Tiến hành thanh toán
-      </button>
+      <div id="product-modal-content" class="space-y-4"></div>
     </div>
   </div>
 
 
-  <!-- ================= SEARCH MODAL ================= -->
-  <div id="search-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
-    <div class="bg-moc-bg w-full max-w-xl rounded-3xl p-6 shadow-2xl border border-moc-border relative">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="font-serif text-lg text-moc-brown">Tìm kiếm tại MỘC Scent</h3>
-        <button onclick="toggleSearchModal()" class="text-moc-muted hover:text-moc-brown"><i class="fa-solid fa-xmark text-lg"></i></button>
+  <!-- ================= SHOPPING CART DRAWER ================= -->
+  <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[380px] bg-moc-bg z-50 shadow-2xl transform translate-x-full transition duration-300 flex flex-col justify-between">
+    <div class="p-5 border-b border-moc-border flex items-center justify-between">
+      <h3 class="font-serif font-semibold text-lg text-moc-brown">Giỏ hàng của bạn</h3>
+      <button onclick="toggleCartDrawer()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="cart-items-container" class="flex-grow p-5 overflow-y-auto space-y-4"></div>
+    <div class="p-5 border-t border-moc-border bg-moc-card space-y-3">
+      <div class="flex justify-between items-center text-sm font-semibold text-moc-brown">
+        <span>Tổng tiền:</span>
+        <span id="cart-total-price">0đ</span>
       </div>
-      <div class="relative">
-        <input type="text" id="search-input" onkeyup="handleSearchInput(this.value)" placeholder="Nhập tên nến thơm, tinh dầu..." class="w-full pl-10 pr-4 py-3 rounded-2xl border border-moc-border bg-moc-card text-sm focus:outline-none focus:ring-2 focus:ring-moc-brown">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-moc-muted"></i>
-      </div>
-      <div id="search-results" class="mt-4 max-h-60 overflow-y-auto space-y-2"></div>
+      <button onclick="checkoutCart()" class="w-full bg-moc-brown text-white py-3.5 rounded-full">Thanh toán</button>
     </div>
   </div>
 
@@ -758,106 +439,58 @@
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
     const productsData = [
-      { id: 1, name: 'Nến thơm Lavender Calm', scentCategory: 'hoacaihuong', price: 129000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=400&q=80', desc: 'Thư giãn • Giảm stress' },
-      { id: 2, name: 'Nến thơm Vanilla Dream', scentCategory: 'vanilla', price: 129000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=400&q=80', desc: 'Ngọt ngào • Ấm áp' },
-      { id: 3, name: 'Nến thơm Citrus Fresh', scentCategory: 'camngot', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80', desc: 'Tươi mới • Năng lượng' },
-      { id: 4, name: 'Nến thơm Sandalwood', scentCategory: 'godanhuong', price: 149000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80', desc: 'Trầm ấm • Tĩnh lặng' },
-      { id: 5, name: 'Nến thơm Rose Garden', scentCategory: 'hoacaihuong', price: 149000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80', desc: 'Lãng mạn • Dịu nhẹ' },
-      { id: 6, name: 'Nến thơm Green Tea', scentCategory: 'traxanh', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=400&q=80', desc: 'Thanh khiết • Thư thái' },
-      { id: 7, name: 'Nến thơm Ocean Breeze', scentCategory: 'traxanh', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80', desc: 'Tươi mát • Sảng khoái' },
-      { id: 8, name: 'Nến thơm Musk Warmth', scentCategory: 'godanhuong', price: 149000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80', desc: 'Quyến rũ • Ấm áp' }
+      { id: 1, name: 'Nến thơm Lavender Calm', price: 129000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1602928321679-560b4139c907?auto=format&fit=crop&w=400&q=80', desc: 'Thư giãn • Giảm stress' },
+      { id: 2, name: 'Nến thơm Vanilla Dream', price: 129000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=400&q=80', desc: 'Ngọt ngào • Ấm áp' },
+      { id: 3, name: 'Nến thơm Citrus Fresh', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80', desc: 'Tươi mới • Năng lượng' },
+      { id: 4, name: 'Nến thơm Sandalwood', price: 149000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80', desc: 'Trầm ấm • Tĩnh lặng' },
+      { id: 5, name: 'Nến thơm Rose Garden', price: 149000, cat: 'tinhdau', img: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80', desc: 'Lãng mạn • Dịu nhẹ' },
+      { id: 6, name: 'Nến thơm Green Tea', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=400&q=80', desc: 'Thanh khiết • Thư thái' },
+      { id: 7, name: 'Nến thơm Ocean Breeze', price: 139000, cat: 'nenthom', img: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80', desc: 'Tươi mát • Sảng khoái' }
     ];
 
     let cart = [];
-    let activeCategory = 'all';
-    let selectedScentName = 'Lavender';
-    let customGiftQty = 1;
+    let selectedSize = '75g';
+    let currentModalProduct = null;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderProducts(productsData);
-      updateCartUI();
-    });
-
+    // Chuyển đổi giữa các trang SPA
     function switchTab(tabId) {
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById('page-' + tabId).classList.remove('hidden');
+      document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+      const targetTab = document.getElementById('tab-' + tabId);
+      if (targetTab) targetTab.classList.remove('hidden');
 
-      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(link => link.classList.remove('active'));
       const activeNav = document.getElementById('nav-' + tabId);
       if (activeNav) activeNav.classList.add('active');
+
+      if (tabId === 'products') {
+        renderProducts(productsData);
+      }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-
-    function filterCategory(cat) {
-      activeCategory = cat;
-      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
-        btn.classList.remove('bg-moc-brown', 'text-white');
-        btn.classList.add('text-moc-muted');
-      });
-      event.target.classList.add('bg-moc-brown', 'text-white');
-      event.target.classList.remove('text-moc-muted');
-
-      const titleMap = {
-        'all': 'Tất cả sản phẩm',
-        'nenthom': 'Nến thơm',
-        'hopqua': 'Hộp quà tặng',
-        'canhanhoa': 'Cá nhân hóa',
-        'tinhdau': 'Tinh dầu'
-      };
-      document.getElementById('catalog-title').innerText = titleMap[cat] || 'Danh mục sản phẩm';
-
-      applyFilters();
-    }
-
-    function applyFilters() {
-      let filtered = [...productsData];
-
-      if (activeCategory !== 'all') {
-        filtered = filtered.filter(p => p.cat === activeCategory);
-      }
-
-      const checkedScents = Array.from(document.querySelectorAll('.scent-filter:checked')).map(cb => cb.value);
-      if (checkedScents.length > 0) {
-        filtered = filtered.filter(p => checkedScents.includes(p.scentCategory));
-      }
-
-      const priceVal = document.querySelector('input[name="price"]:checked')?.value;
-      if (priceVal === 'under150') filtered = filtered.filter(p => p.price < 150000);
-      else if (priceVal === '150to250') filtered = filtered.filter(p => p.price >= 150000 && p.price <= 250000);
-      else if (priceVal === 'above250') filtered = filtered.filter(p => p.price > 250000);
-
-      const sortVal = document.getElementById('sort-select').value;
-      if (sortVal === 'low') filtered.sort((a, b) => a.price - b.price);
-      else if (sortVal === 'high') filtered.sort((b, a) => b.price - a.price);
-
-      renderProducts(filtered);
-    }
-
+    // Render danh sách sản phẩm
     function renderProducts(items) {
       const grid = document.getElementById('product-grid');
-      if (items.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-10 text-moc-muted text-xs">Không tìm thấy sản phẩm phù hợp.</div>`;
+      if (!grid) return;
+
+      if (!items || items.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-10 text-moc-muted text-xs">Không tìm thấy sản phẩm.</div>`;
         return;
       }
 
       grid.innerHTML = items.map(p => `
-        <div class="bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between">
+        <div onclick="openProductModal(${p.id})" class="bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between cursor-pointer group">
           <div>
             <div class="aspect-square rounded-xl overflow-hidden mb-3 bg-moc-bg border border-moc-border/40">
-              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
             <h4 class="font-semibold text-xs sm:text-sm text-moc-brown line-clamp-1">${p.name}</h4>
             <p class="text-[11px] text-moc-muted mt-0.5">${p.desc}</p>
           </div>
           <div class="mt-3 pt-3 border-t border-moc-border/40 flex items-center justify-between">
             <span class="font-bold text-xs sm:text-sm text-moc-brown">${p.price.toLocaleString('vi-VN')}đ</span>
-            <button onclick="addToCart(${p.id})" class="bg-moc-brown text-white text-[11px] px-3 py-1.5 rounded-full hover:bg-moc-brownDark transition">
+            <button onclick="event.stopPropagation(); openProductModal(${p.id})" class="bg-moc-brown text-white text-[11px] px-3.5 py-1.5 rounded-full hover:bg-moc-brownDark transition">
               Thêm
             </button>
           </div>
@@ -865,175 +498,118 @@
       `).join('');
     }
 
-    function updateLiveCard(val) {
-      const cardText = document.getElementById('live-card-text');
-      const charCounter = document.getElementById('char-counter');
-      charCounter.innerText = `${val.length}/100`;
+    // Modal Chọn Size Sản Phẩm
+    function openProductModal(pId) {
+      const p = productsData.find(item => item.id === pId);
+      if (!p) return;
 
-      if (val.trim() === '') {
-        cardText.innerText = 'Cảm ơn bạn đã luôn ở đây ♡';
-      } else {
-        cardText.innerText = val;
-      }
+      currentModalProduct = p;
+      selectedSize = '75g';
+      const price75 = p.price;
+      const price160 = p.price + 90000;
+
+      const modalContent = document.getElementById('product-modal-content');
+      modalContent.innerHTML = `
+        <div class="aspect-square rounded-2xl overflow-hidden border border-moc-border bg-moc-card mb-4">
+          <img src="${p.img}" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <span class="text-[10px] uppercase tracking-widest text-moc-muted font-semibold">MỘC SCENT</span>
+          <h3 class="font-serif text-xl font-bold text-moc-brown mt-0.5">${p.name}</h3>
+          <p class="text-xs text-moc-muted mt-1">${p.desc}</p>
+        </div>
+        <div class="flex items-center justify-between py-2 border-y border-moc-border/60">
+          <span id="modal-product-price" class="text-xl font-bold text-moc-brown">${price75.toLocaleString('vi-VN')}đ</span>
+        </div>
+        <div class="space-y-2 pt-1">
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn kích thước / Trọng lượng:</label>
+          <div class="grid grid-cols-2 gap-3 text-center">
+            <button type="button" onclick="selectProductSize(this, '75g', ${price75})" class="size-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+              <span class="block text-sm font-bold">75g</span>
+              <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
+            </button>
+            <button type="button" onclick="selectProductSize(this, '160g', ${price160})" class="size-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+              <span class="block text-sm font-bold">160g</span>
+              <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
+            </button>
+          </div>
+        </div>
+        <button onclick="addSelectedSizeToCart()" class="w-full bg-moc-brown text-white py-3.5 rounded-full font-medium text-sm transition mt-4">
+          <span id="modal-cart-btn-text">Thêm vào giỏ hàng - ${price75.toLocaleString('vi-VN')}đ</span>
+        </button>
+      `;
+      document.getElementById('product-detail-modal').classList.remove('hidden');
     }
 
-    function changeMainImage(src) {
-      document.getElementById('main-gift-img').src = src;
-    }
-
-    function selectScent(btn, scent) {
-      selectedScentName = scent;
-      document.querySelectorAll('.scent-opt-btn').forEach(b => {
+    function selectProductSize(btn, size, price) {
+      selectedSize = size;
+      document.querySelectorAll('.size-opt-btn').forEach(b => {
         b.classList.remove('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
         b.classList.add('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
       });
       btn.classList.remove('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
       btn.classList.add('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+
+      document.getElementById('modal-product-price').innerText = price.toLocaleString('vi-VN') + 'đ';
+      document.getElementById('modal-cart-btn-text').innerText = `Thêm vào giỏ hàng - ${price.toLocaleString('vi-VN')}đ`;
     }
 
-    function adjustDetailQty(delta) {
-      customGiftQty = Math.max(1, customGiftQty + delta);
-      document.getElementById('detail-qty-display').innerText = customGiftQty;
-    }
-
-    function addCustomBoxToCart() {
-      const msg = document.getElementById('custom-message-input').value.trim() || 'Cảm ơn bạn đã luôn ở đây ♡';
-      const hasCard = document.getElementById('gift-card-check').checked;
-
-      const item = {
-        id: 'custom-' + Date.now(),
-        name: `Hộp quà cá nhân hóa (${selectedScentName})`,
-        price: 199000,
-        qty: customGiftQty,
-        img: document.getElementById('main-gift-img').src,
-        note: `Lời nhắn: "${msg}" ${hasCard ? '(Kèm thiệp)' : ''}`
-      };
-
-      cart.push(item);
+    function addSelectedSizeToCart() {
+      if (!currentModalProduct) return;
+      const finalPrice = selectedSize === '160g' ? currentModalProduct.price + 90000 : currentModalProduct.price;
+      cart.push({ ...currentModalProduct, name: `${currentModalProduct.name} (${selectedSize})`, price: finalPrice, qty: 1 });
       updateCartUI();
+      closeProductModal();
       toggleCartDrawer();
     }
 
-    function addToCart(pId) {
-      const prod = productsData.find(p => p.id === pId);
-      if (!prod) return;
-
-      const existing = cart.find(c => c.id === pId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...prod, qty: 1 });
-      }
-      updateCartUI();
-      toggleCartDrawer();
+    function closeProductModal() {
+      document.getElementById('product-detail-modal').classList.add('hidden');
     }
 
-    function updateCartUI() {
-      const totalCount = cart.reduce((acc, curr) => acc + curr.qty, 0);
-      document.getElementById('cart-count-badge').innerText = totalCount;
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-moc-brown', 'text-white');
+        btn.classList.add('text-moc-muted');
+      });
+      event.target.classList.add('bg-moc-brown', 'text-white');
+      event.target.classList.remove('text-moc-muted');
 
-      const itemsContainer = document.getElementById('cart-items-container');
-      
-      if (cart.length === 0) {
-        itemsContainer.innerHTML = `<div class="text-center py-12 text-moc-muted text-xs">Giỏ hàng của bạn đang trống.</div>`;
-        document.getElementById('cart-total-price').innerText = '0đ';
-        return;
-      }
-
-      let totalPrice = 0;
-      itemsContainer.innerHTML = cart.map((item, index) => {
-        totalPrice += item.price * item.qty;
-        return `
-          <div class="flex items-center space-x-3 bg-moc-card p-3 rounded-2xl border border-moc-border/60">
-            <img src="${item.img}" class="w-14 h-14 rounded-xl object-cover">
-            <div class="flex-grow">
-              <h5 class="text-xs font-semibold text-moc-brown line-clamp-1">${item.name}</h5>
-              ${item.note ? `<p class="text-[10px] text-moc-muted italic">${item.note}</p>` : ''}
-              <span class="text-xs font-bold text-moc-brown">${item.price.toLocaleString('vi-VN')}đ</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <button onclick="changeCartQty(${index}, -1)" class="w-6 h-6 rounded-full bg-moc-bg text-moc-brown text-xs font-bold">-</button>
-              <span class="text-xs font-semibold text-moc-brown">${item.qty}</span>
-              <button onclick="changeCartQty(${index}, 1)" class="w-6 h-6 rounded-full bg-moc-bg text-moc-brown text-xs font-bold">+</button>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      document.getElementById('cart-total-price').innerText = totalPrice.toLocaleString('vi-VN') + 'đ';
-    }
-
-    function changeCartQty(index, delta) {
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
-      }
-      updateCartUI();
+      if (cat === 'all') renderProducts(productsData);
+      else renderProducts(productsData.filter(p => p.cat === cat));
     }
 
     function toggleCartDrawer() {
-      const drawer = document.getElementById('cart-drawer');
-      const overlay = document.getElementById('cart-drawer-overlay');
-
-      if (drawer.classList.contains('translate-x-full')) {
-        drawer.classList.remove('translate-x-full');
-        overlay.classList.remove('hidden');
-      } else {
-        drawer.classList.add('translate-x-full');
-        overlay.classList.add('hidden');
-      }
+      document.getElementById('cart-drawer').classList.toggle('translate-x-full');
+      document.getElementById('cart-drawer-overlay').classList.toggle('hidden');
     }
 
-    function checkoutCart() {
-      if (cart.length === 0) return alert('Giỏ hàng trống!');
-      alert('Cảm ơn bạn đã đặt hàng tại MỘC Scent! Chúng mình sẽ liên hệ xác nhận đơn hàng sớm nhất.');
-      cart = [];
-      updateCartUI();
-      toggleCartDrawer();
-    }
-
-    function switchDetailTab(tabKey) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-
-      document.getElementById('tab-btn-' + tabKey).classList.add('active');
-      document.getElementById('tab-content-' + tabKey).classList.remove('hidden');
-    }
-
-    function toggleSearchModal() {
-      document.getElementById('search-modal').classList.toggle('hidden');
-    }
-
-    function handleSearchInput(q) {
-      const resultsDiv = document.getElementById('search-results');
-      if (!q.trim()) {
-        resultsDiv.innerHTML = '';
+    function updateCartUI() {
+      document.getElementById('cart-count-badge').innerText = cart.reduce((acc, curr) => acc + curr.qty, 0);
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-moc-muted text-xs">Giỏ hàng trống.</div>`;
+        document.getElementById('cart-total-price').innerText = '0đ';
         return;
       }
-      const matches = productsData.filter(p => p.name.toLowerCase().includes(q.toLowerCase()));
-      resultsDiv.innerHTML = matches.map(m => `
-        <div onclick="switchTab('products'); toggleSearchModal();" class="p-2.5 bg-moc-card hover:bg-moc-accent/40 rounded-xl flex items-center space-x-3 cursor-pointer">
-          <img src="${m.img}" class="w-10 h-10 rounded-lg object-cover">
-          <div>
-            <h5 class="text-xs font-semibold text-moc-brown">${m.name}</h5>
-            <span class="text-[11px] font-bold text-moc-brown">${m.price.toLocaleString('vi-VN')}đ</span>
-          </div>
-        </div>
-      `).join('');
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        total += item.price * item.qty;
+        return `<div class="flex justify-between items-center text-xs text-moc-brown font-medium"><span>${item.name} x${item.qty}</span><span>${(item.price * item.qty).toLocaleString('vi-VN')}đ</span></div>`;
+      }).join('');
+      document.getElementById('cart-total-price').innerText = total.toLocaleString('vi-VN') + 'đ';
     }
 
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      alert('Cảm ơn bạn đã gửi lời nhắn! MỘC Scent sẽ phản hồi cho bạn sớm nhất.');
-      e.target.reset();
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     }
+
+    // Tự động kích hoạt khi trang web tải xong
+    document.addEventListener('DOMContentLoaded', () => {
+      switchTab('home');
+      renderProducts(productsData);
+      updateCartUI();
+    });
   </script>
-  // Ép trang web luôn mở Trang chủ khi vừa truy cập
-document.addEventListener('DOMContentLoaded', () => {
-  switchTab('home');
-  if (typeof renderProducts === 'function' && typeof productsData !== 'undefined') {
-    renderProducts(productsData);
-  }
-});
 </body>
 </html>
