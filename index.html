@@ -1179,7 +1179,6 @@
     }
 
     // Xác nhận đặt hàng
-    // Link Web App Google Sheets nhận đơn hàng
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwomwPjZg4vezO7Q0jXXT-qgM-qKgIWCCT45gHgQ31t8r2rgRszOS5xFhVZzVxIFN_1Vw/exec";
 
     async function handlePlaceOrder(e) {
@@ -1201,41 +1200,35 @@
       const paymentMethod = paymentMethodEl ? paymentMethodEl.value : 'COD';
       const totalAmount = document.getElementById('checkout-total-price').innerText;
 
-      // Gom chi tiết danh sách sản phẩm thành dạng văn bản
       const itemsDetail = cart.map(item => `${item.name} (SL: ${item.qty})`).join('; ');
 
-      const orderData = {
-        time: new Date().toLocaleString("vi-VN"),
-        name: name,
-        phone: phone,
-        address: address,
-        note: note,
-        items: itemsDetail,
-        paymentMethod: paymentMethod,
-        total: totalAmount
-      };
+      // Đóng gói dạng FormData chuẩn
+      const formData = new FormData();
+      formData.append('time', new Date().toLocaleString("vi-VN"));
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('address', address);
+      formData.append('note', note);
+      formData.append('items', itemsDetail);
+      formData.append('paymentMethod', paymentMethod);
+      formData.append('total', totalAmount);
 
       try {
-        // Gửi dữ liệu âm thầm sang Google Sheets
         await fetch(GOOGLE_SHEET_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(orderData)
+          body: formData
         });
 
-        alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn ${name} đã ủng hộ MỘC Scent!\nĐơn hàng đã được ghi nhận vào hệ thống.`);
+        alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn ${name} đã ủng hộ MỘC Scent!\nĐơn hàng đã được lưu lại, MỘC sẽ sớm liên hệ xác nhận với bạn.`);
 
-        // Dọn dẹp form và giỏ hàng sau khi đặt thành công
         cart = [];
         updateCartUI();
         closeCheckoutModal();
         toggleCartDrawer();
         e.target.reset();
       } catch (error) {
-        alert('Có lỗi xảy ra khi gửi đơn. Bạn vui lòng liên hệ Hotline/Zalo của shop nhé!');
+        alert('Có lỗi xảy ra khi gửi đơn. Vui lòng liên hệ Hotline/Zalo để được hỗ trợ nhé!');
       } finally {
         if (submitBtn) {
           submitBtn.innerText = originalBtnText;
@@ -1243,7 +1236,7 @@
         }
       }
     }
-
+    
 // XỬ LÝ GỬI FORM LIÊN HỆ
     function handleContactSubmit(e) {
       e.preventDefault();
