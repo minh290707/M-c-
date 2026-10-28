@@ -620,22 +620,26 @@
     let selectedSize = '75g';
     let currentModalProduct = null;
 
-    // HÀM CHUYỂN TAB CHUẨN XÁC 100%
+    // HÀM CHUYỂN TAB CHUẨN XÁC
     function switchTab(tabId) {
-      // Ẩn tất cả các trang
+      // 1. Ẩn tất cả các trang
       document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
       
-      // Hiển thị duy nhất trang được bấm
+      // 2. Hiển thị đúng trang được bấm
       const targetTab = document.getElementById('tab-' + tabId);
-      if (targetTab) targetTab.classList.remove('hidden');
+      if (targetTab) {
+        targetTab.classList.remove('hidden');
+      }
 
-      // Cập nhật gạch chân nút Menu
+      // 3. Cập nhật gạch chân nút Menu
       document.querySelectorAll('.nav-btn').forEach(link => link.classList.remove('active'));
       const activeNav = document.getElementById('nav-' + tabId);
-      if (activeNav) activeNav.classList.add('active');
+      if (activeNav) {
+        activeNav.classList.add('active');
+      }
 
-      // Tự động vẽ sản phẩm nếu bấm vào tab Sản phẩm
-      if (tabId === 'products') {
+      // 4. Tự động vẽ sản phẩm nếu bấm vào tab Sản phẩm
+      if (tabId === 'products' && typeof renderProducts === 'function' && typeof productsData !== 'undefined') {
         renderProducts(productsData);
       }
 
