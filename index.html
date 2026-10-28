@@ -1179,21 +1179,69 @@
     }
 
     // Xác nhận đặt hàng
-    function handlePlaceOrder(e) {
+    // Link Web App Google Sheets nhận đơn hàng
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwomwPjZg4vezO7Q0jXXT-qgM-qKgIWCCT45gHgQ31t8r2rgRszOS5xFhVZzVxIFN_1Vw/exec";
+
+    async function handlePlaceOrder(e) {
       e.preventDefault();
+      
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.innerText : 'Xác nhận đặt hàng';
+      if (submitBtn) {
+        submitBtn.innerText = 'Đang lưu đơn hàng...';
+        submitBtn.disabled = true;
+      }
+
       const name = document.getElementById('order-name').value.trim();
       const phone = document.getElementById('order-phone').value.trim();
       const address = document.getElementById('order-address').value.trim();
+      const noteInput = document.getElementById('order-note');
+      const note = noteInput ? noteInput.value.trim() : '';
       const paymentMethodEl = document.querySelector('input[name="payment_method"]:checked');
       const paymentMethod = paymentMethodEl ? paymentMethodEl.value : 'COD';
       const totalAmount = document.getElementById('checkout-total-price').innerText;
 
-      alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nNgười nhận: ${name}\nSĐT: ${phone}\nĐịa chỉ: ${address}\nHình thức: ${paymentMethod}\nTổng tiền: ${totalAmount}\n\nMỘC Scent sẽ sớm liên hệ xác nhận với bạn!`);
+      // Gom chi tiết danh sách sản phẩm thành dạng văn bản
+      const itemsDetail = cart.map(item => `${item.name} (SL: ${item.qty})`).join('; ');
 
-      cart = [];
-      updateCartUI();
-      closeCheckoutModal();
-      toggleCartDrawer();
+      const orderData = {
+        time: new Date().toLocaleString("vi-VN"),
+        name: name,
+        phone: phone,
+        address: address,
+        note: note,
+        items: itemsDetail,
+        paymentMethod: paymentMethod,
+        total: totalAmount
+      };
+
+      try {
+        // Gửi dữ liệu âm thầm sang Google Sheets
+        await fetch(GOOGLE_SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn ${name} đã ủng hộ MỘC Scent!\nĐơn hàng đã được ghi nhận vào hệ thống.`);
+
+        // Dọn dẹp form và giỏ hàng sau khi đặt thành công
+        cart = [];
+        updateCartUI();
+        closeCheckoutModal();
+        toggleCartDrawer();
+        e.target.reset();
+      } catch (error) {
+        alert('Có lỗi xảy ra khi gửi đơn. Bạn vui lòng liên hệ Hotline/Zalo của shop nhé!');
+      } finally {
+        if (submitBtn) {
+          submitBtn.innerText = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      }
     }
 
 // XỬ LÝ GỬI FORM LIÊN HỆ
