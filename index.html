@@ -301,77 +301,114 @@
     </div>
 
 
-    <!-- ================= TRANG 3: HỘP QUÀ CÁ NHÂN HÓA ================= -->
-    <div id="tab-custom-gift" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <nav class="flex text-xs text-moc-muted mb-6 space-x-2">
-        <button onclick="switchTab('home')" class="hover:underline">Trang chủ</button>
-        <span>/</span>
-        <button onclick="switchTab('products')" class="hover:underline">Hộp quà tặng</button>
-        <span>/</span>
-        <span class="text-moc-brown font-semibold">Hộp quà nến thơm cá nhân hóa</span>
-      </nav>
+  <!-- ================= TRANG 3: HỘP QUÀ CÁ NHÂN HÓA ================= -->
+<div id="tab-custom-gift" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <nav class="flex text-xs text-moc-muted mb-6 space-x-2">
+    <button onclick="switchTab('home')" class="hover:underline">Trang chủ</button>
+    <span>/</span>
+    <button onclick="switchTab('products')" class="hover:underline">Hộp quà tặng</button>
+    <span>/</span>
+    <span class="text-moc-brown font-semibold">Hộp quà nến thơm cá nhân hóa</span>
+  </nav>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        <div class="lg:col-span-6 grid grid-cols-12 gap-4">
-          <div class="col-span-3 sm:col-span-2 space-y-3">
-            <button onclick="changeMainImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border-2 border-moc-brown">
-              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-            </button>
-            <button onclick="changeMainImage('https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
-              <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
-            </button>
-          </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    
+    <!-- CỘT BÊN TRÁI: KHU VỰC ẢNH & PREVIEW THIỆP -->
+    <div class="lg:col-span-6 grid grid-cols-12 gap-4">
+      <!-- Thumbnail Ảnh Phụ -->
+      <div class="col-span-3 sm:col-span-2 space-y-3">
+        <button type="button" onclick="changeMainImage('images/hopqua-canhan.png', 'canhanhoa.png')" class="w-full aspect-square rounded-xl overflow-hidden border-2 border-moc-brown">
+          <img src="images/hopqua-canhan.png" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='canhanhoa.png'">
+        </button>
+        <button type="button" onclick="changeMainImage('images/hopqua-bloom.png', 'hopqua.png')" class="w-full aspect-square rounded-xl overflow-hidden border border-moc-border hover:border-moc-brown">
+          <img src="images/hopqua-bloom.png" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='hopqua.png'">
+        </button>
+      </div>
 
-          <div class="col-span-9 sm:col-span-10 relative bg-moc-card rounded-3xl overflow-hidden border border-moc-border p-2">
-            <img id="main-gift-img" src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Hộp quà nến thơm" class="w-full h-[400px] sm:h-[460px] object-cover rounded-2xl">
-            
-            <div class="absolute bottom-6 right-6 bg-[#fdfbf7] p-4 rounded-xl shadow-xl border border-moc-border max-w-[240px] rotate-[-2deg]">
-              <span class="text-[10px] uppercase tracking-wider text-moc-muted block">Thiệp MỘC Scent</span>
-              <p id="live-card-text" class="font-handwriting text-xl text-moc-brown leading-tight min-h-[44px] break-words">
-                Cảm ơn bạn đã luôn ở đây ♡
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6 space-y-6">
-          <div>
-            <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà nến thơm cá nhân hóa</h1>
-            <p class="text-xs sm:text-sm text-moc-muted">Gửi yêu thương theo cách của riêng bạn</p>
-            <div class="flex items-center space-x-3 mt-3">
-              <span class="text-2xl font-bold text-moc-brown">199.000đ</span>
-            </div>
-          </div>
-
-          <div class="space-y-3">
-            <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn mùi hương</label>
-            <div class="grid grid-cols-4 gap-3 text-center">
-              <button onclick="selectScent(this, 'Lavender')" class="scent-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-medium text-moc-brown transition">
-                Lavender
-              </button>
-              <button onclick="selectScent(this, 'Vanilla')" class="scent-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition">
-                Vanilla
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <textarea 
-              id="custom-message-input"
-              oninput="updateLiveCard(this.value)"
-              maxlength="100"
-              rows="3"
-              placeholder="Nhập lời nhắn của bạn..." 
-              class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none text-sm text-moc-brown"
-            ></textarea>
-          </div>
-
-          <button onclick="addCustomBoxToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
-            Thêm vào giỏ hàng
-          </button>
+      <!-- Ảnh Chính & Preview Thiệp Viết Tay -->
+      <div class="col-span-9 sm:col-span-10 relative bg-moc-card rounded-3xl overflow-hidden border border-moc-border p-2">
+        <img id="main-gift-img" src="images/hopqua-canhan.png" alt="Hộp quà nến thơm cá nhân hóa" class="w-full h-[400px] sm:h-[460px] object-cover rounded-2xl" onerror="this.onerror=null; this.src='canhanhoa.png'">
+        
+        <!-- Thiệp xem trước realtime -->
+        <div class="absolute bottom-6 right-6 bg-[#fdfbf7] p-4 rounded-xl shadow-xl border border-moc-border max-w-[240px] rotate-[-2deg]">
+          <span class="text-[10px] uppercase tracking-wider text-moc-muted block font-semibold">Thiệp MỘC Scent</span>
+          <p id="live-card-text" class="font-handwriting text-xl text-moc-brown leading-tight min-h-[44px] break-words mt-1">
+            Cảm ơn bạn đã luôn ở đây ♡
+          </p>
         </div>
       </div>
     </div>
+
+    <!-- CỘT BÊN PHẢI: TÙY CHỌN SẢN PHẨM -->
+    <div class="lg:col-span-6 space-y-6">
+      <div>
+        <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà nến thơm cá nhân hóa</h1>
+        <p class="text-xs sm:text-sm text-moc-muted">Gửi yêu thương theo cách của riêng bạn • Bao gồm Nến thơm + Thiệp viết tay + Hộp quà nơ gỗ</p>
+        <div class="flex items-center space-x-3 mt-3">
+          <span id="custom-gift-price" class="text-2xl font-bold text-moc-brown">199.000đ</span>
+        </div>
+      </div>
+
+      <!-- 1. CHỌN SIZE NẾN -->
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">1. Chọn kích thước nến:</label>
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <button type="button" onclick="selectGiftSize(this, '75g', 199000)" class="gift-size-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+            <span class="block text-sm font-bold">Hũ 75g</span>
+            <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
+          </button>
+          <button type="button" onclick="selectGiftSize(this, '160g', 289000)" class="gift-size-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+            <span class="block text-sm font-bold">Hũ 160g</span>
+            <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ (+90k)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. CHỌN 1 TRONG 12 MÙI HƯƠNG -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">2. Chọn mùi hương nến:</label>
+          <span id="selected-scent-name" class="text-xs font-bold text-moc-brown">Lavender</span>
+        </div>
+        
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-[220px] overflow-y-auto pr-1">
+          <button type="button" onclick="selectGiftScent(this, 'Lavender')" class="gift-scent-btn p-2.5 rounded-xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-medium text-moc-brown transition text-center truncate">Lavender</button>
+          <button type="button" onclick="selectGiftScent(this, 'Vanilla')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Vanilla</button>
+          <button type="button" onclick="selectGiftScent(this, 'Citrus Fresh')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Citrus Fresh</button>
+          <button type="button" onclick="selectGiftScent(this, 'Sandalwood')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Sandalwood</button>
+          <button type="button" onclick="selectGiftScent(this, 'Rose Garden')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Rose Garden</button>
+          <button type="button" onclick="selectGiftScent(this, 'Green Tea')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Green Tea</button>
+          <button type="button" onclick="selectGiftScent(this, 'Ocean Breeze')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Ocean Breeze</button>
+          <button type="button" onclick="selectGiftScent(this, 'Musk Warmth')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Musk Warmth</button>
+          <button type="button" onclick="selectGiftScent(this, 'White Jasmine')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">White Jasmine</button>
+          <button type="button" onclick="selectGiftScent(this, 'Cedarwood')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Cedarwood</button>
+          <button type="button" onclick="selectGiftScent(this, 'Earl Grey')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Earl Grey</button>
+          <button type="button" onclick="selectGiftScent(this, 'Coffee Beans')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Coffee Beans</button>
+        </div>
+      </div>
+
+      <!-- 3. NHẬP LỜI NHẮN THIỆP -->
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">3. Nội dung thiệp viết tay:</label>
+        <textarea 
+          id="custom-message-input"
+          oninput="updateLiveCard(this.value)"
+          maxlength="100"
+          rows="3"
+          placeholder="Nhập lời nhắn yêu thương của bạn tại đây..." 
+          class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:border-moc-brown text-sm text-moc-brown"
+        ></textarea>
+        <span class="text-[10px] text-moc-muted block text-right">Tối đa 100 ký tự</span>
+      </div>
+
+      <!-- NÚT MUA HÀNG -->
+      <button onclick="addCustomBoxToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
+        <span id="custom-gift-btn-text">Thêm Hộp Quà Vào Giỏ Hàng - 199.000đ</span>
+      </button>
+    </div>
+
+  </div>
+</div>
 
 
     <!-- ================= TRANG 4: VỀ MỘC ================= -->
@@ -544,7 +581,7 @@
       },
       { 
         id: 13, 
-        name: 'Lemongrass & Tea', 
+        name: 'Lemongrass & Tea + Máy xông tinh dầu', 
         price: 129000, 
         cat: 'tinhdau', 
         img: 'images/lemongrass.png', 
@@ -553,7 +590,7 @@
       },
       { 
         id: 14, 
-        name: 'Lotus & White Musk', 
+        name: 'Lotus & White Musk + Máy xông tinh dầu', 
         price: 129000, 
         cat: 'tinhdau', 
         img: 'images/Lotus.png', 
@@ -562,7 +599,7 @@
       },
       { 
         id: 15, 
-        name: 'Hinoki & Bamboo', 
+        name: 'Hinoki & Bamboo + Máy xông tinh dầu', 
         price: 129000, 
         cat: 'tinhdau', 
         img: 'images/bamboo.png', 
@@ -571,7 +608,7 @@
       },
       { 
         id: 16, 
-        name: 'Sea salt & Sage', 
+        name: 'Sea salt & Sage + Máy xông tinh dầu', 
         price: 129000, 
         cat: 'tinhdau', 
         img: 'images/sea.png', 
