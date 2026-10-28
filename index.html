@@ -671,15 +671,67 @@
       `).join('');
     }
 
-    // Modal Chọn Size Sản Phẩm
+let currentModalProduct = null;
+    let selectedOption = '';
+
+    // Modal hiển thị tùy chọn size riêng cho Nến thơm (75g/160g) & Tinh dầu (10ml/30ml)
     function openProductModal(pId) {
       const p = productsData.find(item => item.id === pId);
       if (!p) return;
 
       currentModalProduct = p;
-      selectedSize = '75g';
-      const price75 = p.price;
-      const price160 = p.price + 149000;
+      let optionsHTML = '';
+
+      // 1. NẾN THƠM -> Chọn size 75g & 160g
+      if (p.cat === 'nenthom') {
+        selectedOption = '75g';
+        const price75 = p.price;
+        const price160 = p.price + 90000;
+
+        optionsHTML = `
+          <div class="space-y-2 pt-1">
+            <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn kích thước / Trọng lượng:</label>
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <button type="button" onclick="selectModalOption(this, '75g', ${price75})" class="modal-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+                <span class="block text-sm font-bold">75g</span>
+                <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
+              </button>
+              <button type="button" onclick="selectModalOption(this, '160g', ${price160})" class="modal-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+                <span class="block text-sm font-bold">160g</span>
+                <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
+              </button>
+            </div>
+          </div>
+        `;
+      } 
+      // 2. TINH DẦU -> Chọn dung tích 10ml & 30ml
+      else if (p.cat === 'tinhdau') {
+        selectedOption = '10ml';
+        const price10ml = p.price;
+        const price30ml = p.price + 120000;
+
+        optionsHTML = `
+          <div class="space-y-2 pt-1">
+            <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn dung tích chai:</label>
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <button type="button" onclick="selectModalOption(this, '10ml', ${price10ml})" class="modal-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+                <span class="block text-sm font-bold">10ml</span>
+                <span class="text-[10px] text-moc-muted font-normal">Dùng ~1 tháng</span>
+              </button>
+              <button type="button" onclick="selectModalOption(this, '30ml', ${price30ml})" class="modal-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+                <span class="block text-sm font-bold">30ml</span>
+                <span class="text-[10px] text-moc-muted font-normal">Dùng ~3 tháng</span>
+              </button>
+            </div>
+          </div>
+        `;
+      } 
+      
+        
+        // 3. HỘP QUÀ / KHÁC -> Không hiện chọn size
+      else {
+        selectedOption = '';
+      }
 
       const modalContent = document.getElementById('product-modal-content');
       modalContent.innerHTML = `
@@ -692,31 +744,21 @@
           <p class="text-xs text-moc-muted mt-1">${p.desc}</p>
         </div>
         <div class="flex items-center justify-between py-2 border-y border-moc-border/60">
-          <span id="modal-product-price" class="text-xl font-bold text-moc-brown">${price75.toLocaleString('vi-VN')}đ</span>
+          <span id="modal-product-price" class="text-xl font-bold text-moc-brown">${p.price.toLocaleString('vi-VN')}đ</span>
         </div>
-        <div class="space-y-2 pt-1">
-          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn kích thước / Trọng lượng:</label>
-          <div class="grid grid-cols-2 gap-3 text-center">
-            <button type="button" onclick="selectProductSize(this, '75g', ${price75})" class="size-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
-              <span class="block text-sm font-bold">75g</span>
-              <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
-            </button>
-            <button type="button" onclick="selectProductSize(this, '160g', ${price160})" class="size-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
-              <span class="block text-sm font-bold">160g</span>
-              <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
-            </button>
-          </div>
-        </div>
-        <button onclick="addSelectedSizeToCart()" class="w-full bg-moc-brown text-white py-3.5 rounded-full font-medium text-sm transition mt-4">
-          <span id="modal-cart-btn-text">Thêm vào giỏ hàng - ${price75.toLocaleString('vi-VN')}đ</span>
+
+        ${optionsHTML}
+
+        <button onclick="addModalItemToCart()" class="w-full bg-moc-brown text-white py-3.5 rounded-full font-medium text-sm transition mt-4 hover:bg-moc-brownDark">
+          <span id="modal-cart-btn-text">Thêm vào giỏ hàng - ${p.price.toLocaleString('vi-VN')}đ</span>
         </button>
       `;
       document.getElementById('product-detail-modal').classList.remove('hidden');
     }
 
-    function selectProductSize(btn, size, price) {
-      selectedSize = size;
-      document.querySelectorAll('.size-opt-btn').forEach(b => {
+    function selectModalOption(btn, opt, price) {
+      selectedOption = opt;
+      document.querySelectorAll('.modal-opt-btn').forEach(b => {
         b.classList.remove('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
         b.classList.add('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
       });
@@ -727,10 +769,29 @@
       document.getElementById('modal-cart-btn-text').innerText = `Thêm vào giỏ hàng - ${price.toLocaleString('vi-VN')}đ`;
     }
 
-    function addSelectedSizeToCart() {
+    function addModalItemToCart() {
       if (!currentModalProduct) return;
-      const finalPrice = selectedSize === '160g' ? currentModalProduct.price + 90000 : currentModalProduct.price;
-      cart.push({ ...currentModalProduct, name: `${currentModalProduct.name} (${selectedSize})`, price: finalPrice, qty: 1 });
+
+      let finalPrice = currentModalProduct.price;
+      let itemName = currentModalProduct.name;
+
+      if (currentModalProduct.cat === 'nenthom' && selectedOption === '160g') {
+        finalPrice += 90000;
+      } else if (currentModalProduct.cat === 'tinhdau' && selectedOption === '30ml') {
+        finalPrice += 120000;
+      }
+
+      if (selectedOption) {
+        itemName += ` (${selectedOption})`;
+      }
+
+      cart.push({ 
+        ...currentModalProduct, 
+        name: itemName, 
+        price: finalPrice, 
+        qty: 1 
+      });
+
       updateCartUI();
       closeProductModal();
       toggleCartDrawer();
