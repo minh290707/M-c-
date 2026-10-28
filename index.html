@@ -418,7 +418,7 @@
       
       <!-- NÚT MUA HÀNG -->
       <button onclick="addCustomBoxToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
-        <span id="custom-gift-btn-text">Thêm Hộp Quà Vào Giỏ Hàng - 199.000đ</span>
+        <span id="custom-gift-btn-text">Thêm Hộp Quà Vào Giỏ Hàng - 219.000đ</span>
       </button>
     </div>
 
@@ -477,7 +477,7 @@
         <span>Tổng tiền:</span>
         <span id="cart-total-price">0đ</span>
       </div>
-      <button onclick="checkoutCart()" class="w-full bg-moc-brown text-white py-3.5 rounded-full">Thanh toán</button>
+      <button onclick="openCheckoutModal()" class="w-full bg-moc-brown text-white py-3.5 rounded-full font-medium hover:bg-moc-brownDark transition shadow-md">Thanh toán</button>
     </div>
   </div>
 
@@ -854,20 +854,46 @@
     }
 
     function updateCartUI() {
-      document.getElementById('cart-count-badge').innerText = cart.reduce((acc, curr) => acc + curr.qty, 0);
-      const container = document.getElementById('cart-items-container');
-      if (cart.length === 0) {
-        container.innerHTML = `<div class="text-center py-12 text-moc-muted text-xs">Giỏ hàng trống.</div>`;
-        document.getElementById('cart-total-price').innerText = '0đ';
-        return;
-      }
-      let total = 0;
-      container.innerHTML = cart.map(item => {
-        total += item.price * item.qty;
-        return `<div class="flex justify-between items-center text-xs text-moc-brown font-medium"><span>${item.name} x${item.qty}</span><span>${(item.price * item.qty).toLocaleString('vi-VN')}đ</span></div>`;
-      }).join('');
-      document.getElementById('cart-total-price').innerText = total.toLocaleString('vi-VN') + 'đ';
-    }
+  const badge = document.getElementById('cart-count-badge');
+  if (badge) badge.innerText = cart.reduce((acc, curr) => acc + curr.qty, 0);
+
+  const container = document.getElementById('cart-items-container');
+  const totalPriceEl = document.getElementById('cart-total-price');
+  if (!container) return;
+
+  if (cart.length === 0) {
+    container.innerHTML = `<div class="text-center py-16 text-moc-muted text-xs">Giỏ hàng của bạn đang trống.</div>`;
+    if (totalPriceEl) totalPriceEl.innerText = '0đ';
+    return;
+  }
+
+  let total = 0;
+  container.innerHTML = cart.map((item, idx) => {
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+
+    return `
+      <div class="py-3 border-b border-moc-border/40 flex justify-between items-start gap-3">
+        <div class="flex-1">
+          <h5 class="text-xs font-semibold text-moc-brown leading-snug">${item.name}</h5>
+          <span class="text-[11px] text-moc-muted block mt-0.5">${item.price.toLocaleString('vi-VN')}đ</span>
+          
+          <div class="flex items-center space-x-2 mt-2">
+            <div class="flex items-center border border-moc-border rounded-lg overflow-hidden bg-white">
+              <button type="button" onclick="changeCartItemQty(${idx}, -1)" class="w-6 h-6 flex items-center justify-center text-xs text-moc-brown hover:bg-moc-accent/30">−</button>
+              <span class="w-6 text-center text-xs font-bold text-moc-brown">${item.qty}</span>
+              <button type="button" onclick="changeCartItemQty(${idx}, 1)" class="w-6 h-6 flex items-center justify-center text-xs text-moc-brown hover:bg-moc-accent/30">+</button>
+            </div>
+            <button type="button" onclick="removeCartItem(${idx})" class="text-[10px] text-red-500 hover:underline">Xóa</button>
+          </div>
+        </div>
+        <span class="text-xs font-bold text-moc-brown whitespace-nowrap">${itemTotal.toLocaleString('vi-VN')}đ</span>
+      </div>
+    `;
+  }).join('');
+
+  if (totalPriceEl) totalPriceEl.innerText = total.toLocaleString('vi-VN') + 'đ';
+}
 
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
@@ -983,7 +1009,135 @@
       updateCartUI();
       toggleCartDrawer();
     }
+
+// Tăng / giảm số lượng
+    function changeCartItemQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    // Xóa sản phẩm khỏi giỏ
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    // Mở và đóng modal thanh toán
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        alert('Giỏ hàng của bạn đang trống!');
+        return;
+      }
+      const summaryList = document.getElementById('checkout-summary-list');
+      const checkoutTotal = document.getElementById('checkout-total-price');
+      let total = 0;
+
+      if (summaryList) {
+        summaryList.innerHTML = cart.map(item => {
+          total += item.price * item.qty;
+          return `
+            <div class="flex justify-between items-start gap-2">
+              <span class="text-moc-brown flex-1">• ${item.name} <b class="text-moc-brownDark">x${item.qty}</b></span>
+              <span class="font-medium text-moc-brown">${(item.price * item.qty).toLocaleString('vi-VN')}đ</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (checkoutTotal) checkoutTotal.innerText = total.toLocaleString('vi-VN') + 'đ';
+
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Xác nhận đặt hàng
+    function handlePlaceOrder(e) {
+      e.preventDefault();
+      const name = document.getElementById('order-name').value.trim();
+      const phone = document.getElementById('order-phone').value.trim();
+      const address = document.getElementById('order-address').value.trim();
+      const paymentMethodEl = document.querySelector('input[name="payment_method"]:checked');
+      const paymentMethod = paymentMethodEl ? paymentMethodEl.value : 'COD';
+      const totalAmount = document.getElementById('checkout-total-price').innerText;
+
+      alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nNgười nhận: ${name}\nSĐT: ${phone}\nĐịa chỉ: ${address}\nHình thức: ${paymentMethod}\nTổng tiền: ${totalAmount}\n\nMỘC Scent sẽ sớm liên hệ xác nhận với bạn!`);
+
+      cart = [];
+      updateCartUI();
+      closeCheckoutModal();
+      toggleCartDrawer();
+    }
     
   </script>
+
+<!-- MODAL FORM THANH TOÁN -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+    <div class="bg-moc-bg w-full max-w-lg rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto border border-moc-border shadow-2xl relative">
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-moc-muted hover:text-moc-brown text-lg">✕</button>
+      
+      <span class="text-[10px] uppercase tracking-widest text-moc-muted font-semibold block">MỘC SCENT</span>
+      <h3 class="font-serif text-2xl font-bold text-moc-brown mt-1 mb-4">Thông tin đặt hàng</h3>
+
+      <!-- Tóm tắt đơn hàng thu nhỏ -->
+      <div id="checkout-summary-list" class="bg-moc-card p-4 rounded-2xl border border-moc-border/60 mb-5 space-y-2 text-xs">
+        <!-- Render danh sách sản phẩm bằng JS -->
+      </div>
+
+      <form onsubmit="handlePlaceOrder(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-1">Họ và tên người nhận *</label>
+          <input type="text" id="order-name" required placeholder="Nguyễn Văn A" class="w-full p-3 rounded-xl border border-moc-border bg-white text-xs text-moc-brown focus:outline-none focus:border-moc-brown">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-1">Số điện thoại *</label>
+          <input type="tel" id="order-phone" required placeholder="0912 345 678" class="w-full p-3 rounded-xl border border-moc-border bg-white text-xs text-moc-brown focus:outline-none focus:border-moc-brown">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-1">Địa chỉ nhận hàng chi tiết *</label>
+          <textarea id="order-address" required rows="2" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố..." class="w-full p-3 rounded-xl border border-moc-border bg-white text-xs text-moc-brown focus:outline-none focus:border-moc-brown"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-1">Ghi chú đơn hàng (nếu có)</label>
+          <input type="text" id="order-note" placeholder="Giao giờ hành chính, gọi trước khi giao..." class="w-full p-3 rounded-xl border border-moc-border bg-white text-xs text-moc-brown focus:outline-none focus:border-moc-brown">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider mb-2">Hình thức thanh toán</label>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <label class="flex items-center p-3 rounded-xl border border-moc-brown bg-moc-accent/30 cursor-pointer">
+              <input type="radio" name="payment_method" value="COD" checked class="text-moc-brown focus:ring-moc-brown">
+              <span class="ml-2 font-medium text-moc-brown">Thanh toán khi nhận hàng (COD)</span>
+            </label>
+            <label class="flex items-center p-3 rounded-xl border border-moc-border bg-white cursor-pointer hover:border-moc-brown">
+              <input type="radio" name="payment_method" value="Chuyển khoản QR" class="text-moc-brown focus:ring-moc-brown">
+              <span class="ml-2 font-medium text-moc-brown">Chuyển khoản ngân hàng</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-moc-border flex justify-between items-center text-sm font-bold text-moc-brown">
+          <span>Tổng thanh toán:</span>
+          <span id="checkout-total-price" class="text-xl">0đ</span>
+        </div>
+
+        <button type="submit" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md mt-2">
+          Xác nhận đặt hàng
+        </button>
+      </form>
+    </div>
+  </div>
+  
 </body>
 </html>
