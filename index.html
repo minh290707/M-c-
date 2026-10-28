@@ -704,6 +704,41 @@ let currentModalProduct = null;
           </div>
         `;
       } 
+
+
+      let currentModalProduct = null;
+    let selectedOption = '';
+
+    // Modal hiển thị tùy chọn size riêng cho Nến thơm (75g/160g) & Tinh dầu (10ml/30ml)
+    function openProductModal(pId) {
+      const p = productsData.find(item => item.id === pId);
+      if (!p) return;
+
+      currentModalProduct = p;
+      let optionsHTML = '';
+
+      // 1. NẾN THƠM -> Chọn size 75g & 160g
+      if (p.cat === 'nenthom') {
+        selectedOption = '75g';
+        const price75 = p.price;
+        const price160 = p.price + 90000;
+
+        optionsHTML = `
+          <div class="space-y-2 pt-1">
+            <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">Chọn kích thước / Trọng lượng:</label>
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <button type="button" onclick="selectModalOption(this, '75g', ${price75})" class="modal-opt-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+                <span class="block text-sm font-bold">75g</span>
+                <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
+              </button>
+              <button type="button" onclick="selectModalOption(this, '160g', ${price160})" class="modal-opt-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+                <span class="block text-sm font-bold">160g</span>
+                <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
+              </button>
+            </div>
+          </div>
+        `;
+      } 
       // 2. TINH DẦU -> Chọn dung tích 10ml & 30ml
       else if (p.cat === 'tinhdau') {
         selectedOption = '10ml';
@@ -726,9 +761,7 @@ let currentModalProduct = null;
           </div>
         `;
       } 
-      
-        
-        // 3. HỘP QUÀ / KHÁC -> Không hiện chọn size
+      // 3. HỘP QUÀ / KHÁC -> Không hiện chọn size
       else {
         selectedOption = '';
       }
@@ -800,7 +833,7 @@ let currentModalProduct = null;
     function closeProductModal() {
       document.getElementById('product-detail-modal').classList.add('hidden');
     }
-
+      
     function filterCategory(cat) {
       document.querySelectorAll('.cat-filter-btn').forEach(btn => {
         btn.classList.remove('bg-moc-brown', 'text-white');
