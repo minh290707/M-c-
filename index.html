@@ -393,19 +393,16 @@
           <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">3. Khắc tên lên nắp gỗ (Miễn phí):</label>
           <span class="text-[10px] text-moc-muted">Tối đa 25 ký tự</span>
         </div>
-        <div class="relative">
-          <input 
-            type="text" 
-            id="custom-engrave-input" 
-            maxlength="25"
-            placeholder="Ví dụ: Dành tặng Lan Anh, Mộc Scent..." 
-            class="w-full p-3.5 pl-10 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:border-moc-brown text-sm text-moc-brown placeholder:text-moc-muted/60"
-          >
-          <i class="fa-solid fa-pen-nib absolute left-3.5 top-1/2 -translate-y-1/2 text-moc-muted text-xs"></i>
-        </div>
+        <input 
+          type="text" 
+          id="custom-engrave-input" 
+          maxlength="25"
+          placeholder="Ví dụ: Dành tặng Lan Anh, Mộc Scent..." 
+          class="w-full p-3.5 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:border-moc-brown text-sm text-moc-brown placeholder:text-moc-muted/60"
+        >
       </div>
-      
-      <!-- 3. NHẬP LỜI NHẮN THIỆP -->
+
+      <!-- 4. NỘI DUNG THIỆP VIẾT TAY -->
       <div class="space-y-2">
         <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">4. Nội dung thiệp viết tay:</label>
         <textarea 
@@ -418,7 +415,7 @@
         ></textarea>
         <span class="text-[10px] text-moc-muted block text-right">Tối đa 100 ký tự</span>
       </div>
-
+      
       <!-- NÚT MUA HÀNG -->
       <button onclick="addCustomBoxToCart()" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-sm transition shadow-md">
         <span id="custom-gift-btn-text">Thêm Hộp Quà Vào Giỏ Hàng - 199.000đ</span>
@@ -953,6 +950,30 @@
       cart.push({
         id: 'box-' + Date.now(),
         name: `Hộp quà cá nhân hóa (${selectedGiftSize} - Mùi ${selectedGiftScent}) [${note}]`,
+        price: selectedGiftPrice,
+        img: 'images/hopqua-canhan.png',
+        fallbackImg: 'canhanhoa.png',
+        qty: 1
+      });
+
+      updateCartUI();
+      toggleCartDrawer();
+    }
+
+// 5. Thêm Hộp Quà Cá Nhân Hóa vào giỏ hàng (kèm Size + Mùi + Khắc tên + Thiệp)
+    function addCustomBoxToCart() {
+      const engraveInput = document.getElementById('custom-engrave-input');
+      const msgInput = document.getElementById('custom-message-input');
+
+      const engraveName = (engraveInput && engraveInput.value.trim()) ? engraveInput.value.trim() : 'Không khắc';
+      const customMsg = (msgInput && msgInput.value.trim()) ? msgInput.value.trim() : 'Thiệp trống';
+
+      const itemTitle = `Hộp quà (${selectedGiftSize} - Mùi ${selectedGiftScent})`;
+      const customDetails = `Khắc nắp: "${engraveName}" • Thiệp: "${customMsg}"`;
+
+      cart.push({
+        id: 'box-' + Date.now(),
+        name: `${itemTitle} [${customDetails}]`,
         price: selectedGiftPrice,
         img: 'images/hopqua-canhan.png',
         fallbackImg: 'canhanhoa.png',
