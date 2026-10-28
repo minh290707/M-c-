@@ -342,7 +342,7 @@
     <!-- CỘT BÊN PHẢI: TÙY CHỌN SẢN PHẨM -->
     <div class="lg:col-span-6 space-y-6">
       <div>
-        <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà nến thơm cá nhân hóa</h1>
+        <h1 class="font-serif text-2xl sm:text-3xl text-moc-brown font-normal mb-2">Hộp quà personalized design</h1>
         <p class="text-xs sm:text-sm text-moc-muted">Gửi yêu thương theo cách của riêng bạn • Bao gồm Nến thơm + Thiệp viết tay + Hộp quà nơ gỗ</p>
         <div class="flex items-center space-x-3 mt-3">
           <span id="custom-gift-price" class="text-2xl font-bold text-moc-brown">199.000đ</span>
@@ -380,16 +380,34 @@
           <button type="button" onclick="selectGiftScent(this, 'Green Tea')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Green Tea</button>
           <button type="button" onclick="selectGiftScent(this, 'Ocean Breeze')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Ocean Breeze</button>
           <button type="button" onclick="selectGiftScent(this, 'Musk Warmth')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Musk Warmth</button>
-          <button type="button" onclick="selectGiftScent(this, 'Earl Grey Tea')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">White Jasmine</button>
-          <button type="button" onclick="selectGiftScent(this, 'Cedarwood Forest')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Cedarwood</button>
-          <button type="button" onclick="selectGiftScent(this, 'Sweet Peach')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Earl Grey</button>
+          <button type="button" onclick="selectGiftScent(this, 'Earl Grey Tea')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Earl Grey Tea</button>
+          <button type="button" onclick="selectGiftScent(this, 'Cedarwood Forest')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Cedarwood Forest</button>
+          <button type="button" onclick="selectGiftScent(this, 'Sweet Peach')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Sweet Peach</button>
           <button type="button" onclick="selectGiftScent(this, 'Coffee Beans')" class="gift-scent-btn p-2.5 rounded-xl border border-moc-border bg-moc-bg text-xs font-medium text-moc-muted hover:border-moc-brown transition text-center truncate">Coffee Beans</button>
         </div>
       </div>
 
+<!-- 3. KHẮC TÊN LÊN NẮP GỖ (MỚI) -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">3. Khắc tên lên nắp gỗ (Miễn phí):</label>
+          <span class="text-[10px] text-moc-muted">Tối đa 25 ký tự</span>
+        </div>
+        <div class="relative">
+          <input 
+            type="text" 
+            id="custom-engrave-input" 
+            maxlength="25"
+            placeholder="Ví dụ: Dành tặng Lan Anh, Mộc Scent..." 
+            class="w-full p-3.5 pl-10 rounded-2xl border border-moc-border bg-moc-bg focus:outline-none focus:border-moc-brown text-sm text-moc-brown placeholder:text-moc-muted/60"
+          >
+          <i class="fa-solid fa-pen-nib absolute left-3.5 top-1/2 -translate-y-1/2 text-moc-muted text-xs"></i>
+        </div>
+      </div>
+      
       <!-- 3. NHẬP LỜI NHẮN THIỆP -->
       <div class="space-y-2">
-        <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">3. Nội dung thiệp viết tay:</label>
+        <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">4. Nội dung thiệp viết tay:</label>
         <textarea 
           id="custom-message-input"
           oninput="updateLiveCard(this.value)"
