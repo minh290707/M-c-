@@ -117,10 +117,13 @@
 
       <!-- Action Icons -->
       <div class="flex items-center space-x-5 text-moc-brown">
-        <button onclick="toggleSearchModal()" title="Tìm kiếm" class="p-2 hover:bg-moc-accent/50 rounded-full transition">
+        <!-- NÚT TÌM KIẾM -->
+        <button type="button" onclick="toggleSearchModal()" class="text-moc-brown hover:text-moc-brownDark p-1 transition" title="Tìm kiếm">
           <i class="fa-solid fa-magnifying-glass text-lg"></i>
         </button>
-        <button title="Tài khoản" class="p-2 hover:bg-moc-accent/50 rounded-full transition hidden sm:block">
+
+        <!-- NÚT TÀI KHOẢN -->
+        <button type="button" onclick="toggleAccountModal()" class="text-moc-brown hover:text-moc-brownDark p-1 transition" title="Tài khoản">
           <i class="fa-regular fa-user text-lg"></i>
         </button>
         <button onclick="toggleCartDrawer()" class="p-2 hover:bg-moc-accent/50 rounded-full transition relative">
@@ -1206,6 +1209,69 @@
       document.getElementById('contact-info').value = '';
       document.getElementById('contact-msg').value = '';
     }
+
+// BẬT / TẮT POPUP TÌM KIẾM
+    function toggleSearchModal() {
+      const modal = document.getElementById('search-modal');
+      if (!modal) return;
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        const input = document.getElementById('search-input-box');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+        const resList = document.getElementById('search-results-list');
+        if (resList) resList.innerHTML = '<p class="text-center text-moc-muted py-6">Nhập từ khóa để tìm sản phẩm...</p>';
+      }
+    }
+
+    // XỬ LÝ TÌM KIẾM SẢN PHẨM THEO TỪ KHÓA
+    function handleSearchProducts(keyword) {
+      const resultsContainer = document.getElementById('search-results-list');
+      if (!resultsContainer) return;
+      const query = keyword.trim().toLowerCase();
+
+      if (!query) {
+        resultsContainer.innerHTML = '<p class="text-center text-moc-muted py-6">Nhập từ khóa để tìm sản phẩm...</p>';
+        return;
+      }
+
+      // Lọc danh sách từ mảng productsData sẵn có
+      const filtered = (typeof productsData !== 'undefined' ? productsData : []).filter(p => 
+        (p.name && p.name.toLowerCase().includes(query)) || 
+        (p.desc && p.desc.toLowerCase().includes(query))
+      );
+
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-center text-moc-muted py-6">Không tìm thấy sản phẩm phù hợp.</p>';
+        return;
+      }
+
+      resultsContainer.innerHTML = filtered.map(item => `
+        <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-moc-card border border-transparent hover:border-moc-border/40 transition">
+          <div>
+            <h4 class="font-medium text-moc-brown text-xs">${item.name}</h4>
+            <span class="text-[11px] text-moc-muted">${item.price ? item.price.toLocaleString('vi-VN') + 'đ' : ''}</span>
+          </div>
+          <button type="button" onclick="toggleSearchModal(); switchTab('products');" class="text-xs bg-moc-brown text-white px-3 py-1.5 rounded-lg hover:bg-moc-brownDark transition">
+            Xem
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // BẬT / TẮT POPUP TÀI KHOẢN
+    function toggleAccountModal() {
+      const modal = document.getElementById('account-modal');
+      if (modal) modal.classList.toggle('hidden');
+    }
+
+    // XỬ LÝ ĐĂNG NHẬP THÀNH VIÊN
+    function handleAccountLogin(e) {
+      e.preventDefault();
+      const loginId = document.getElementById('acc-login-id').value.trim();
+      alert(
     
   </script>
 
@@ -1266,6 +1332,63 @@
           Xác nhận đặt hàng
         </button>
       </form>
+    </div>
+  </div>
+
+<!-- MODAL TÌM KIẾM SẢN PHẨM -->
+  <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-black/50 hidden backdrop-blur-sm">
+    <div class="bg-moc-bg w-full max-w-xl rounded-3xl p-6 border border-moc-border shadow-2xl relative">
+      <div class="flex items-center justify-between pb-3 border-b border-moc-border/60 mb-4">
+        <h3 class="font-serif text-lg font-bold text-moc-brown">Tìm kiếm nến thơm</h3>
+        <button type="button" onclick="toggleSearchModal()" class="text-moc-muted hover:text-moc-brown text-base">✕</button>
+      </div>
+      <div class="relative mb-4">
+        <input 
+          type="text" 
+          id="search-input-box" 
+          oninput="handleSearchProducts(this.value)" 
+          placeholder="Nhập tên sản phẩm, mùi hương (Lavender, Gỗ đàn hương...)..." 
+          class="w-full p-3.5 pl-10 rounded-2xl border border-moc-border bg-white text-xs text-moc-brown focus:outline-none focus:border-moc-brown"
+        >
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-moc-muted text-xs"></i>
+      </div>
+      <!-- Kết quả tìm kiếm -->
+      <div id="search-results-list" class="max-h-60 overflow-y-auto space-y-2 text-xs">
+        <p class="text-center text-moc-muted py-6">Nhập từ khóa để tìm sản phẩm...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG NHẬP / TÀI KHOẢN -->
+  <div id="account-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 hidden backdrop-blur-sm">
+    <div class="bg-moc-bg w-full max-w-md rounded-3xl p-6 sm:p-8 border border-moc-border shadow-2xl relative">
+      <button type="button" onclick="toggleAccountModal()" class="absolute top-5 right-5 text-moc-muted hover:text-moc-brown text-lg">✕</button>
+      <span class="text-[10px] uppercase tracking-widest text-moc-muted font-semibold block text-center">THÀNH VIÊN</span>
+      <h3 class="font-serif text-2xl font-bold text-moc-brown text-center mt-1 mb-6">MỘC Scent Club</h3>
+      
+      <form onsubmit="handleAccountLogin(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-moc-brown uppercase tracking-wider mb-1">Số điện thoại hoặc Email</label>
+          <input type="text" id="acc-login-id" required placeholder="0912... hoặc email@gmail.com" class="w-full p-3.5 rounded-xl border border-moc-border bg-white text-moc-brown focus:outline-none focus:border-moc-brown">
+        </div>
+        <div>
+          <label class="block font-semibold text-moc-brown uppercase tracking-wider mb-1">Mật khẩu</label>
+          <input type="password" id="acc-login-pass" required placeholder="••••••••" class="w-full p-3.5 rounded-xl border border-moc-border bg-white text-moc-brown focus:outline-none focus:border-moc-brown">
+        </div>
+        <div class="flex justify-between items-center text-[11px] text-moc-muted">
+          <label class="flex items-center gap-1 cursor-pointer">
+            <input type="checkbox" checked class="text-moc-brown focus:ring-moc-brown"> Nhớ tài khoản
+          </label>
+          <a href="javascript:void(0)" onclick="alert('Vui lòng liên hệ Hotline/Zalo để được cấp lại mật khẩu!')" class="hover:underline">Quên mật khẩu?</a>
+        </div>
+        <button type="submit" class="w-full bg-moc-brown hover:bg-moc-brownDark text-white py-3.5 rounded-full font-medium text-xs transition shadow-md mt-2">
+          Đăng nhập
+        </button>
+      </form>
+
+      <div class="mt-6 pt-4 border-t border-moc-border/60 text-center text-[11px] text-moc-muted">
+        Chưa có tài khoản? <a href="javascript:void(0)" onclick="alert('Tính năng tự đăng ký đang hoàn thiện. Bạn có thể đặt hàng trực tiếp không cần đăng nhập!')" class="text-moc-brown font-bold hover:underline">Tạo tài khoản mới</a>
+      </div>
     </div>
   </div>
   
