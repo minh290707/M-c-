@@ -864,6 +864,87 @@
       renderProducts(productsData);
       updateCartUI();
     });
+
+// ================= LOGIC HỘP QUÀ CÁ NHÂN HÓA =================
+    let selectedGiftSize = '75g';
+    let selectedGiftPrice = 199000;
+    let selectedGiftScent = 'Lavender';
+
+    // 1. Chọn mùi hương trong 12 mùi
+    function selectGiftScent(btn, scentName) {
+      selectedGiftScent = scentName;
+      
+      const label = document.getElementById('selected-scent-name');
+      if (label) label.innerText = scentName;
+
+      document.querySelectorAll('.gift-scent-btn').forEach(b => {
+        b.classList.remove('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+        b.classList.add('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+      });
+
+      btn.classList.remove('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+      btn.classList.add('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+    }
+
+    // 2. Chọn kích thước nến (75g / 160g)
+    function selectGiftSize(btn, size, price) {
+      selectedGiftSize = size;
+      selectedGiftPrice = price;
+
+      document.querySelectorAll('.gift-size-btn').forEach(b => {
+        b.classList.remove('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+        b.classList.add('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+      });
+
+      btn.classList.remove('border', 'border-moc-border', 'bg-moc-bg', 'text-moc-muted');
+      btn.classList.add('border-2', 'border-moc-brown', 'bg-moc-accent/40', 'text-moc-brown');
+
+      const priceText = price.toLocaleString('vi-VN') + 'đ';
+      const priceDisplay = document.getElementById('custom-gift-price');
+      const btnDisplay = document.getElementById('custom-gift-btn-text');
+
+      if (priceDisplay) priceDisplay.innerText = priceText;
+      if (btnDisplay) btnDisplay.innerText = `Thêm Hộp Quà Vào Giỏ Hàng - ${priceText}`;
+    }
+
+    // 3. Xem trước lời nhắn thiệp realtime
+    function updateLiveCard(text) {
+      const card = document.getElementById('live-card-text');
+      if (card) {
+        card.innerText = text.trim() ? text : 'Cảm ơn bạn đã luôn ở đây ♡';
+      }
+    }
+
+    // 4. Đổi ảnh chính khi bấm ảnh nhỏ
+    function changeMainImage(imgUrl, fallbackUrl) {
+      const mainImg = document.getElementById('main-gift-img');
+      if (mainImg) {
+        mainImg.src = imgUrl;
+        mainImg.onerror = function() {
+          this.onerror = null;
+          this.src = fallbackUrl;
+        };
+      }
+    }
+
+    // 5. Thêm hộp quà hoàn chỉnh vào giỏ hàng
+    function addCustomBoxToCart() {
+      const msgInput = document.getElementById('custom-message-input');
+      const note = (msgInput && msgInput.value.trim()) ? `Lời nhắn: "${msgInput.value.trim()}"` : 'Thiệp trống';
+
+      cart.push({
+        id: 'box-' + Date.now(),
+        name: `Hộp quà cá nhân hóa (${selectedGiftSize} - Mùi ${selectedGiftScent}) [${note}]`,
+        price: selectedGiftPrice,
+        img: 'images/hopqua-canhan.png',
+        fallbackImg: 'canhanhoa.png',
+        qty: 1
+      });
+
+      updateCartUI();
+      toggleCartDrawer();
+    }
+    
   </script>
 </body>
 </html>
