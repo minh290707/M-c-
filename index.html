@@ -651,6 +651,15 @@
       grid.innerHTML = items.map(p => `
         <div onclick="openProductModal(${p.id})" class="relative bg-moc-card rounded-2xl p-3 sm:p-4 border border-moc-border/60 hover:shadow-md transition flex flex-col justify-between cursor-pointer group">
           
+          ${(p.id === 1 || p.id === 11 || p.name.includes('Lavender Calm') || p.name.includes('Sweet Peach')) ? `
+          <!-- Huy hiệu Best Seller góc trên bên trái -->
+          <div class="absolute top-2.5 left-2.5 z-20 pointer-events-none drop-shadow-sm">
+            <span class="inline-flex items-center gap-1 bg-[#5c4033] text-[#f7f3ec] text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#dfd4c3]/40 shadow-sm">
+              <i class="fa-solid fa-crown text-[8px] text-[#c49a6c]"></i> Best Seller
+            </span>
+          </div>
+          ` : ''}
+
           ${(p.id === 8 || p.name.includes('Musk Warmth')) ? `
           <!-- Huy hiệu Signature to nằm ngay góc ngoài của cả ô sản phẩm -->
           <div class="absolute -top-3 -right-3 z-20 pointer-events-none drop-shadow-md">
