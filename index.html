@@ -355,11 +355,11 @@
           <div class="space-y-2">
             <label class="block text-xs font-semibold text-moc-brown uppercase tracking-wider">1. Chọn kích thước nến:</label>
             <div class="grid grid-cols-2 gap-3 text-center">
-              <button type="button" onclick="selectGiftSize(this, '75g', 219000)" class="gift-size-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
+              <button type="button" onclick="selectGiftSize(this, '75g', 249000)" class="gift-size-btn p-3 rounded-2xl border-2 border-moc-brown bg-moc-accent/40 text-xs font-semibold text-moc-brown transition">
                 <span class="block text-sm font-bold">Hũ 75g</span>
                 <span class="text-[10px] text-moc-muted font-normal">Đốt ~20 giờ</span>
               </button>
-              <button type="button" onclick="selectGiftSize(this, '160g', 309000)" class="gift-size-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
+              <button type="button" onclick="selectGiftSize(this, '160g', 399000)" class="gift-size-btn p-3 rounded-2xl border border-moc-border bg-moc-bg text-xs font-semibold text-moc-muted hover:border-moc-brown transition">
                 <span class="block text-sm font-bold">Hũ 160g</span>
                 <span class="text-[10px] text-moc-muted font-normal">Đốt ~45 giờ</span>
               </button>
@@ -678,7 +678,7 @@
       if (p.cat === 'nenthom') {
         selectedOption = '75g';
         const price75 = p.price;
-        const price160 = p.price + 90000;
+        const price160 = p.price + 150000;
 
         optionsHTML = `
           <div class="space-y-2 pt-1">
@@ -762,7 +762,7 @@
       let itemName = currentModalProduct.name;
 
       if (currentModalProduct.cat === 'nenthom' && selectedOption === '160g') {
-        finalPrice += 90000;
+        finalPrice += 150000;
       } else if (currentModalProduct.cat === 'tinhdau' && selectedOption === '30ml') {
         finalPrice += 120000;
       }
