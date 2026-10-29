@@ -1092,6 +1092,21 @@
       renderProducts(productsData);
       updateCartUI();
     });
+
+// HÀM ĐÓNG POPUP QUẢNG CÁO
+    function closePromoModal() {
+      const promo = document.getElementById('promo-modal');
+      if (promo) {
+        promo.classList.add('hidden');
+      }
+    }
+
+    // BẤM VÀO POSTER SẼ ĐÓNG POPUP VÀ CHUYỂN TỚI TRANG SẢN PHẨM
+    function goToProductsFromPromo() {
+      closePromoModal();
+      switchTab('products');
+    }
+    
   </script>
 
   <!-- ================= CÁC MODAL HTML ================= -->
@@ -1212,6 +1227,22 @@
 
       <div class="mt-6 pt-4 border-t border-moc-border/60 text-center text-[11px] text-moc-muted">
         Chưa có tài khoản? <a href="javascript:void(0)" onclick="alert('Tính năng tự đăng ký đang hoàn thiện. Bạn có thể đặt hàng trực tiếp không cần đăng nhập!')" class="text-moc-brown font-bold hover:underline">Tạo tài khoản mới</a>
+      </div>
+    </div>
+  </div>
+
+<!-- ================= POPUP QUẢNG CÁO TRI ÂN 20/11 ================= -->
+  <div id="promo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity duration-300">
+    <div class="relative max-w-sm sm:max-w-md w-full bg-transparent rounded-3xl overflow-hidden shadow-2xl">
+      
+      <!-- NÚT DẤU X ĐÓNG POSTER -->
+      <button type="button" onclick="closePromoModal()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center text-sm shadow-md transition z-20" title="Đóng">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- ẢNH POSTER QUẢNG CÁO -->
+      <div class="cursor-pointer" onclick="goToProductsFromPromo()">
+        <img src="poster.png" alt="Mộc Scent Tri Ân 20/11" class="w-full h-auto object-cover block rounded-3xl select-none">
       </div>
     </div>
   </div>
